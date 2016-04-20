@@ -1,0 +1,9 @@
+<ion-view view-title="Polite">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="polling in pollings" href="#/app/pollings/{{polling.id}}">
+        {{polling.title}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

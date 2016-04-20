@@ -32,42 +32,51 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.notifications', {
+    url: '/notifications',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/notifications.html'
       }
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.profile', {
+      url: '/profile',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/profile.html'
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
+  .state('app.mypollings', {
+      url:'/mypollings',
+      views: {
+          'menuContent': {
+            templateUrl: "templates/mypollings.html",
+            controller:'PollingsCtrl'
+          }
+      }
+  })
+    .state('app.pollings', {
+      url: '/pollings',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/pollings.html',
+          controller: 'PollingsCtrl'
         }
       }
     })
 
   .state('app.single', {
-    url: '/playlists/:playlistId',
+    url: '/pollings/:pollingId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/polling.html',
+        controller: 'PollingCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/pollings');
 });

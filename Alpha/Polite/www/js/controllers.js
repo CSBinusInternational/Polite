@@ -41,16 +41,16 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+.controller('PollingsCtrl', function($scope) {
+  $scope.pollings = [
+    { title: 'Unity 5 for Gamification', id: 1 },
+    { title: 'Ionic for Mobile Development', id: 2 },
+    { title: 'Binus International Evaluation Form', id: 3 },
+    { title: 'Newbinusmaya Evaluation Form', id: 4 },
+    { title: '2016 Thesis Execution', id: 5 },
+    { title: 'Polite App Review', id: 6 }
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('PollingCtrl', function($scope, $stateParams) {
 });

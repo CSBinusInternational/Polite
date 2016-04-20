@@ -1,0 +1,8 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/Users/darmawanalbert/Documents/Polite/Alpha/Polite/platforms/ios/www/lib/ionic/js/ionic.js",
+        "/Users/darmawanalbert/Documents/Polite/Alpha/Polite/platforms/ios/build/emulator/HelloCordova.app/www/cordova.js",
+        "/Users/darmawanalbert/Documents/Polite/Alpha/Polite/platforms/ios/build/emulator/HelloCordova.app/www/cordova_plugins.js",
+        "/Users/darmawanalbert/Documents/Polite/Alpha/Polite/platforms/android/build/intermediates/assets/debug/www/plugins/cordova-plugin-whitelist/whitelist.js"
+    ]
+}
