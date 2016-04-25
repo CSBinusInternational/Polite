@@ -8,48 +8,50 @@ angular.module('starter.controllers', [])
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+    
+    // Form data for the login modal
+      $scope.loginData = {};
 
-  // Form data for the login modal
-  $scope.loginData = {};
+      // Create the login modal that we will use later
+      $ionicModal.fromTemplateUrl('templates/login.html', {
+        scope: $scope
+      }).then(function(modal) {
+        $scope.modal = modal;
+      });
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+      // Triggered in the login modal to close it
+      $scope.closeLogin = function() {
+        $scope.modal.hide();
+      };
 
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
+      // Open the login modal
+      $scope.login = function() {
+        $scope.modal.show();
+      };
 
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
+      // Perform the login action when the user submits the login form
+      $scope.doLogin = function() {
+        console.log('Doing login', $scope.loginData);
 
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
+        // Simulate a login delay. Remove this and replace with your login
+        // code if using a login system
+        $timeout(function() {
+          $scope.closeLogin();
+        }, 1000);
+      };
+  
 })
 
 .controller('PollingsCtrl', function($scope) {
-  $scope.pollings = [
-    { title: 'Unity 5 for Gamification', id: 1 },
-    { title: 'Ionic for Mobile Development', id: 2 },
-    { title: 'Binus International Evaluation Form', id: 3 },
-    { title: 'Newbinusmaya Evaluation Form', id: 4 },
-    { title: '2016 Thesis Execution', id: 5 },
-    { title: 'Polite App Review', id: 6 }
-  ];
+        $scope.pollings = [
+        { title: 'Unity 5 for Gamification', id: 1 },
+        { title: 'Ionic for Mobile Development', id: 2 },
+        { title: 'Binus International Evaluation Form', id: 3 },
+        { title: 'Newbinusmaya Evaluation Form', id: 4 },
+        { title: '2016 Thesis Execution', id: 5 },
+        { title: 'Polite App Review', id: 6 }
+      ];
+   
 })
 
 .controller('PollingCtrl', function($scope, $stateParams) {

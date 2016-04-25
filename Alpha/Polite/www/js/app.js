@@ -67,7 +67,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-
+  
   .state('app.single', {
     url: '/pollings/:pollingId',
     views: {
