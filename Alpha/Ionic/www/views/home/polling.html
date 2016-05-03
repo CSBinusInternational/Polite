@@ -16,7 +16,7 @@
               <div ng-switch on="que.type">
                   <div ng-switch-when="radio">
                     <ion-list>
-                      <ion-radio ng-repeat="cho in que.choices" ng-init="$inner = $index" ng-model="myanswerset[$outer]" name={{$outer}}>{{cho}}</ion-radio>
+                      <ion-radio ng-repeat="cho in que.choices" ng-init="$inner = $index" ng-value="$inner" ng-model="myanswerset[$outer]" name={{$outer}}>{{cho}}</ion-radio>
                       <!--ion-radio ng-repeat="cho in que.choices track by $index" name="asd+$index" ng-model="myanswerset[$parent.$index]" ng-value="myanswerset[$parent.$index]">{{cho}}</ion-radio-->
                     </ion-list>
                   </div>

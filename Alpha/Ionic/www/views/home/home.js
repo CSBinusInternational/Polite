@@ -11,6 +11,7 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
   $scope.addAnswer = function(){
     $scope.todo.push({answer:scope.})
   } */
+  $scope.timestamp = new Date().getTime();
   $scope.pollingsaf =  $firebaseArray(ref.child('pollings'));
   /* Hard coded data for testing
   $scope.pollings = [
@@ -102,7 +103,19 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
   };
 
   $scope.submitPolling = function() {
-    alert("submitted coi");
+    $scope.submissionData = {
+        "uid" : $scope.uuid,
+        "timestamp" : $scope.timestamp,
+        "answerset" : $scope.myanswerset
+    };
+    console.log($scope.submissionData);
+    var indexNum = $scope.openedPollingId-1;
+    var indexString = indexNum.toString();
+    $scope.finalRef = $firebaseArray(ref.child('pollings').child(indexString).child('answers'));
+    console.log($scope.finalRef);
+    $scope.finalRef.$add($scope.submissionData).then(function() {
+            $scope.closeModal();
+    });
   }
 }
 );
