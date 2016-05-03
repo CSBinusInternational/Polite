@@ -1,9 +1,9 @@
 <ion-view view-title="Home" hide-back-button="true">
         <ion-content class="padding-top">
           <h1>All Pollings</h1>
-          <div class="card" ng-repeat="polling in pollings">
+          <div class="card" ng-repeat="polling in pollings"  ng-click="fillPolling()">
                 <div class="item item-divider">
-                    <a href="#/app/home/{{polling.id}}">{{polling.title}}</a>
+                    {{polling.title}}
                 </div>
                 <div class="item item-text-wrap">
                   {{polling.description}}

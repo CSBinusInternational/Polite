@@ -1,11 +1,7 @@
 'Use Strict';
-angular.module('App').controller('homeController', function ($scope, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
+angular.module('App').controller('homeController', function ($scope, $ionicModal, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
   var ref = new Firebase(FURL);
 
-  $scope.logOut = function () {
-      Auth.logout();
-      $location.path("/login");
-  }
   $scope.pollings = [
       { id: 1, title: 'Unity 5 for Gamification', description : 'This is a survey about Unity 5 for Gamification ',creator: 'Albert Darmawan'},
       { id: 2, title: 'Ionic for Mobile Development', description: 'This is a survey about Ionic for Mobile Development', creator: 'Ieuan Ignatius' },
@@ -14,5 +10,33 @@ angular.module('App').controller('homeController', function ($scope, $state,$cor
       { id: 5, title: '2016 Thesis Execution', description: 'This is a survey about 2016 Thesis Execution', creator:'Thomas Dwinata' },
       { id: 6, title: 'Polite App Review', description:'This is a survey about Polite App Review', creator:'Matthew' }
   ];
+
+  $ionicModal.fromTemplateUrl('polling.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.fillPolling = function() {
+    $scope.modal.show();
+  };
+
+  /*$scope.closePolling = function() {
+    $scope.modal.hide();
+  };
+
+
+  $scope.submitPolling = function() {
+    $timeout(function() {
+      $scope.closePolling();
+    }, 1000);
+  };*/
+
+  $scope.logOut = function () {
+      Auth.logout();
+      $location.path("/login");
+  };
+
+
 }
 );

@@ -55,14 +55,6 @@ $stateProvider
           }
       }
     })
-    .state('app.single', {
-      url:'/home/:pollingId',
-      views: {
-          'menuContent': {
-            templateUrl: "views/polling/polling.html"
-          }
-      }
-    })
     ;
 $urlRouterProvider.otherwise("/login");
 })
