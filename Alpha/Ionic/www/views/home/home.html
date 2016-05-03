@@ -1,7 +1,7 @@
 <ion-view view-title="Home" hide-back-button="true">
         <ion-content class="padding-top">
           <h1>All Pollings</h1>
-          <div class="card" ng-repeat="polling in pollings"  ng-click="openModal()">
+          <div class="card" ng-repeat="polling in pollings"  ng-click="openModal(polling.id)">
                 <div class="item item-divider">
                     {{polling.title}}
                 </div>
