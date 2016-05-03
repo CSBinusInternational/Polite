@@ -1,7 +1,6 @@
 'Use Strict';
 angular.module('App').controller('homeController', function ($scope, $ionicModal, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
   var ref = new Firebase(FURL);
-
   $scope.pollings = [
       { id: 1,
         title: 'Unity 5 for Gamification',
