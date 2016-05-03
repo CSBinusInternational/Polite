@@ -1,6 +1,18 @@
 'Use Strict';
-angular.module('App').controller('homeController', function ($scope, $ionicModal, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
+angular.module('App').controller('homeController', function ($scope, $ionicModal, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, $firebaseArray, Auth, FURL, Utils) {
   var ref = new Firebase(FURL);
+  var authData = ref.getAuth();
+  $scope.uuid = authData.uid;
+  /*$scope.result = {
+    "user":"",
+    "pollings": $scope.pollings[openedPollingId-1],
+
+  }
+  $scope.addAnswer = function(){
+    $scope.todo.push({answer:scope.})
+  } */
+  $scope.pollingsaf =  $firebaseArray(ref.child('pollings'));
+  /* Hard coded data for testing
   $scope.pollings = [
       { id: 1,
         title: 'Unity 5 for Gamification',
@@ -65,7 +77,7 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
       { id: 4, title: 'Newbinusmaya Evaluation Form', description: 'This is survey about Newbinusmaya Evaluation Form', creator:'Mark' },
       { id: 5, title: '2016 Thesis Execution', description: 'This is a survey about 2016 Thesis Execution', creator:'Thomas Dwinata' },
       { id: 6, title: 'Polite App Review', description:'This is a survey about Polite App Review', creator:'Matthew' }
-  ];
+  ]; */
 
   $scope.logOut = function () {
       Auth.logout();
@@ -88,5 +100,8 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
     $scope.modal.hide();
   };
 
+  $scope.submitPolling = function() {
+    alert("submitted coi");
+  }
 }
 );

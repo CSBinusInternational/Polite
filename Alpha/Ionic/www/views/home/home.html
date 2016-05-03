@@ -1,15 +1,15 @@
 <ion-view view-title="Home" hide-back-button="true">
         <ion-content class="padding-top">
           <h1>All Pollings</h1>
-          <div class="card" ng-repeat="polling in pollings"  ng-click="openModal(polling.id)">
+          <div class="card" ng-repeat="polling in pollingsaf"  ng-click="openModal(polling.id)">
                 <div class="item item-divider">
                     {{polling.title}}
                 </div>
                 <div class="item item-text-wrap">
                   {{polling.description}}
                 </div>
-                <div class="item item-divider">
-                  {{polling.creator}}
+                <div class="item item-text-wrap">
+                      By {{polling.creator}}
                 </div>
           </div>
           <button ng-click="logOut()" class="button button-clear button-positive">Logout</button>
