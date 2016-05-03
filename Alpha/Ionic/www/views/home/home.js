@@ -16,7 +16,3 @@ angular.module('App').controller('homeController', function ($scope, $state,$cor
   ];
 }
 );
-
-
-
-.controller('PollingsCtrl', function($scope) {

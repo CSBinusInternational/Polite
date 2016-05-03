@@ -1,18 +1,16 @@
 <ion-view view-title="Home" hide-back-button="true">
         <ion-content class="padding-top">
-          <h1>Hello There!</h1>
-          <div ng-repeat="polling in pollings" href="#/app/home/{{polling.id}}">
-            <div class="card" ng-click="">
+          <h1>All Pollings</h1>
+          <div class="card" ng-repeat="polling in pollings">
                 <div class="item item-divider">
-                  {{$polling.title}}
+                    <a href="#/app/home/{{polling.id}}">{{polling.title}}</a>
                 </div>
                 <div class="item item-text-wrap">
-                  {{$polling.description}}
+                  {{polling.description}}
                 </div>
                 <div class="item item-divider">
-                  {{$polling.creator}}
+                  {{polling.creator}}
                 </div>
-            </div>
           </div>
           <button ng-click="logOut()" class="button button-clear button-positive">Logout</button>
         </ion-content>
