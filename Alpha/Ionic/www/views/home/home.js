@@ -93,7 +93,7 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
 
   $scope.openModal = function(chosenpolling) {
     $scope.openedPollingId = chosenpolling;
-    $scope.myanswerset = pollingsaf[openedPollingId-1].answers.answerset;
+    $scope.myanswerset = $scope.pollingsaf[chosenpolling-1].answers[0].answerset;
     $scope.modal.show();
   };
 
