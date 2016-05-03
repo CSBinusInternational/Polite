@@ -8,25 +8,25 @@
     <ion-content>
       <h4>Description</h4>
       <p>{{pollingsaf[openedPollingId-1].description}}</p>
-      <div class="list card" ng-repeat="que in pollingsaf[openedPollingId-1].questions">
+      <div class="list card" ng-repeat="que in pollingsaf[openedPollingId-1].questions track by $index">
           <div class="item">
             <h2>{{que.question}}</h2>
           </div>
           <div class="item item-body">
               <div ng-switch on="que.type">
                   <div ng-switch-when="radio">
-                    <ion-list ng-repeat="cho in que.choices">
-                        <ion-radio ng-model="">{{cho}}</ion-radio>
+                    <ion-list ng-repeat="cho in que.choices track by $index">
+                        <ion-radio ng-click="myanswerset[$parent.$index][$index] = !myanswerset[$parent.$index][$index]" ng-model="myanswerset[$parent.$index][$index]">{{cho}}</ion-radio>
                     </ion-list>
                   </div>
                   <div ng-switch-when="checkbox">
                       <ion-list ng-repeat="cho in que.choices">
-                        <ion-checkbox ng-model="">{{cho}}</ion-checkbox>
+                        <ion-checkbox ng-click="myanswerset[$parent.$index][$index] = !myanswerset[$parent.$index][$index]" ng-model="myanswerset[$parent.$index][$index]">{{cho}}</ion-checkbox>
                       </ion-list>
                   </div>
                   <div ng-switch-default>
                     <label class="item item-input">
-                        <input type="text"/>
+                        <input ng-model="myanswerset[$parent.$index][$index]" type="text"/>
                     </label>
                   </div>
               </div>
