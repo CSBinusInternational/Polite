@@ -11,32 +11,25 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
       { id: 6, title: 'Polite App Review', description:'This is a survey about Polite App Review', creator:'Matthew' }
   ];
 
-  $ionicModal.fromTemplateUrl('polling.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-
-  $scope.fillPolling = function() {
-    $scope.modal.show();
-  };
-
-  /*$scope.closePolling = function() {
-    $scope.modal.hide();
-  };
-
-
-  $scope.submitPolling = function() {
-    $timeout(function() {
-      $scope.closePolling();
-    }, 1000);
-  };*/
-
   $scope.logOut = function () {
       Auth.logout();
       $location.path("/login");
   };
 
+  $ionicModal.fromTemplateUrl('views/home/polling.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
 
 }
 );
