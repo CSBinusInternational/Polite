@@ -38,5 +38,19 @@
                 <a href="#/forgot" class="button button-clear button-positive">Forgot password</a><a href="#/register" class="button button-clear button-positive">Register</a>
           </div>
         </form>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col">
+            <button class="item button button-positive" ng-hide="authData" ng-click="loginFacebook()">
+            <i class="icon ion-social-facebook"></i>&nbsp;&nbsp; Facebook
+            </button>
+          </div>
+          <div class="col">
+            <button class="item button button-assertive" ng-hide="authData" ng-click="loginGoogle()">
+            <i class="icon ion-social-google"></i>&nbsp;&nbsp; Google
+            </button>
+          </div>
+          <div class="col"></div>
+        </div>
         </ion-content>
 </ion-view>

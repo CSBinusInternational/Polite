@@ -2,8 +2,40 @@
 angular.module('App').controller('loginController', function ($scope, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
   var ref = new Firebase(FURL);
   var userkey = "";
+
+  /*
+  Later when published!
+  $scope.loginFacebook = function() {
+      Auth.$authWithOAuthRedirect("facebook").then(function(authData) {
+        // User successfully logged in
+      }).catch(function(error) {
+        if (error.code === "TRANSPORT_UNAVAILABLE") {
+          Auth.$authWithOAuthPopup("facebook").then(function(authData) {
+            // User successfully logged in. We can log to the console
+            // since we’re using a popup here
+            console.log(authData);
+          });
+        } else {
+          // Another error occurred
+          console.log(error);
+        }
+      });
+  };
+  */
+
+  $scope.loginFacebook = function() {
+      Auth.facebooklogin().then(function(authData){
+          console.log(authData);
+          $state.go('app.home');
+      });
+  };
+
+  $scope.loginGoogle = function() {
+      console.log("Login with Google :)");
+  };
+
+
   $scope.signIn = function (user) {
-    console.log("Enviado");
     if(angular.isDefined(user)){
     Utils.show();
     Auth.login(user)

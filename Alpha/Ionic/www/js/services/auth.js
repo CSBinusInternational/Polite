@@ -6,6 +6,10 @@ angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebaseArr
 	var Auth = {
 		user: {},
 
+		facebooklogin: function() {
+      return auth.$authWithOAuthPopup("facebook");
+    },
+
     createProfile: function(uid, user) {
       var profile = {
 				id: uid,
