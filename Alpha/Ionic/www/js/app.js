@@ -55,6 +55,14 @@ $stateProvider
           }
       }
     })
+    .state('app.search', {
+      url:'/search',
+      views: {
+        'menuContent': {
+          templateUrl: "views/search/search.html"
+        }
+      }
+    })
     ;
 $urlRouterProvider.otherwise("/login");
 })
