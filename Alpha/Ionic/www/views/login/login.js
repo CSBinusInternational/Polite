@@ -31,7 +31,10 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
   };
 
   $scope.loginGoogle = function() {
-      console.log("Login with Google :)");
+    Auth.googlelogin().then(function(authData){
+        console.log(authData);
+        $state.go('app.home');
+    });
   };
 
 
