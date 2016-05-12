@@ -81,11 +81,6 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
       { id: 6, title: 'Polite App Review', description:'This is a survey about Polite App Review', creator:'Matthew' }
   ]; */
 
-  $scope.logOut = function () {
-      Auth.logout();
-      $location.path("/login");
-  };
-
   $ionicModal.fromTemplateUrl('views/home/polling.html', {
     scope: $scope,
     animation: 'slide-in-up'

@@ -5,6 +5,7 @@ $stateProvider
     .state('app', {
         url: '/app',
         templateUrl: 'views/sidemenu/sidemenu.html',
+        controller:'sidemenuController',
         abstract: true
     })
     .state('login', {
