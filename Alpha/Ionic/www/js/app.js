@@ -59,7 +59,8 @@ $stateProvider
       url:'/search',
       views: {
         'menuContent': {
-          templateUrl: "views/search/search.html"
+          templateUrl: "views/search/search.html",
+          controller:'searchController'
         }
       }
     })
