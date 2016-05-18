@@ -44,7 +44,8 @@ $stateProvider
       url:'/mypollings',
       views: {
           'menuContent': {
-            templateUrl: "views/mypollings/mypollings.html"
+            templateUrl: "views/mypollings/mypollings.html",
+            controller:'searchController'
           }
       }
     })

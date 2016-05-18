@@ -1,5 +1,5 @@
 'Use Strict';
-angular.module('App').controller('searchController', function ($scope, $ionicModal, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, $firebaseArray, Auth, FURL, Utils) {
+angular.module('App').controller('myPollingsController', function ($scope, $ionicModal, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, $firebaseArray, Auth, FURL, Utils) {
   var ref = new Firebase(FURL);
   var authData = ref.getAuth();
   $scope.uuid = authData.uid;

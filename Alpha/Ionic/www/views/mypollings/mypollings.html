@@ -1,5 +1,18 @@
-<ion-view view-title="My Pollings">
-  <ion-content>
-    <h1>My Pollings</h1>
+<ion-view view-title="My Pollings" hide-back-button="false">
+  <ion-header-bar class="bar bar-subheader" style="height:60px;">
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type='search' placeholder='Search' ng-model='x'>
+    </label>
+  </ion-header-bar>
+  <ion-content class="padding-top">
+    <div class="list">
+      <div ng-repeat="polling in pollingsaf | filter:x"  ng-click="openModal(polling.id)">
+          <li class="item">
+            <h2>{{polling.title}}</h2>
+            <p>{{polling.description}}</p>
+          </li>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
