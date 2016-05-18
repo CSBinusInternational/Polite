@@ -36,7 +36,8 @@ $stateProvider
       url:'/myprofile',
       views: {
           'menuContent': {
-            templateUrl: "views/myprofile/myprofile.html"
+            templateUrl: "views/myprofile/myprofile.html",
+            controller:'myProfileController'
           }
       }
     })
