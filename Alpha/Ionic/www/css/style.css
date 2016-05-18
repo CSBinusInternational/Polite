@@ -40,3 +40,17 @@ label.item.valid-lr {
   border-style:solid !important;
   border-bottom: 1px solid #A9A9AB !important;
 }
+
+.item-profile > img:first-child{
+
+  height:150px;
+  width:150px;
+  border-radius:50%;
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.changepassword{
+  margin-top:100px;
+}
+
