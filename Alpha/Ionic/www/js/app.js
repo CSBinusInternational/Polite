@@ -45,7 +45,7 @@ $stateProvider
       views: {
           'menuContent': {
             templateUrl: "views/mypollings/mypollings.html",
-            controller:'searchController'
+            controller:'myPollingsController'
           }
       }
     })
@@ -58,11 +58,11 @@ $stateProvider
       }
     })
     .state('app.mypollingsummary', {
-      url:'/mypollings/:pollingId',
+      url:'/mypollingsummary/',
       views: {
           'menuContent': {
             templateUrl: "views/mypollingsummary/mypollingsummary.html",
-            controller:'myPollingSummaryCtrl'
+            controller:'myPollingSummaryController'
           }
       }
     })
@@ -77,6 +77,14 @@ $stateProvider
     })
     ;
 $urlRouterProvider.otherwise("/login");
+})
+.factory('mypollid',function() {
+  return {
+        changeCurrentValue: function(i) {
+           this.currentValue = i;
+        },
+        currentValue: 0
+  };
 })
 // Changue this for your Firebase App URL.
 .constant('FURL', 'https://darmawanfirstapp.firebaseio.com/')

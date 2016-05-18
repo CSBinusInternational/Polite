@@ -8,10 +8,10 @@
   <ion-content class="padding-top">
     <div class="list">
       <div ng-repeat="polling in pollingsaf | filter:x"  ng-click="openModal(polling.id)">
-          <li class="item">
+          <a class="item">
             <h2>{{polling.title}}</h2>
             <p>By {{polling.creator}}</p>
-          </li>
+          </a>
       </div>
     </div>
   </ion-content>

@@ -7,12 +7,10 @@
   </ion-header-bar>
   <ion-content class="padding-top">
     <div class="list">
-      <div ng-repeat="polling in pollingsaf | filter:x">
-          <a href="#/app/mypollings/{{polling.id}}">
-          <li class="item">
+      <div ng-repeat="polling in pollingsaf | filter:x"  ng-click="viewSummary(polling.id)">
+          <a class="item">
             <h2>{{polling.title}}</h2>
-            <p>{{polling.description}}</p>
-          </li>
+            <p>By {{polling.creator}}</p>
           </a>
       </div>
     </div>
