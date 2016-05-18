@@ -57,6 +57,15 @@ $stateProvider
           }
       }
     })
+    .state('app.mypollingsummary', {
+      url:'/mypollings/:pollingId',
+      views: {
+          'menuContent': {
+            templateUrl: "views/mypollingsummary/mypollingsummary.html",
+            controller:'myPollingSummaryCtrl'
+          }
+      }
+    })
     .state('app.search', {
       url:'/search',
       views: {
