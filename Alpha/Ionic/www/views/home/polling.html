@@ -1,16 +1,28 @@
 <ion-modal-view>
     <ion-header-bar class="bar-positive" >
-      <h1 class="title">{{pollingsaf[openedPollingId-1].title}}</h1>
+      <h1 class="title">Fill Polling</h1>
       <div class="buttons">
         <button class="button button-clear" ng-click="closeModal()">Close</button>
     </div>
     </ion-header-bar>
     <ion-content>
-      <h4>Description</h4>
-      <p>{{pollingsaf[openedPollingId-1].description}}</p>
+      <div class = "row">
+         <div class = "col-20"></div>
+         <div class = "col-60">
+             <h4>{{pollingsaf[openedPollingId-1].title}}</h4>
+         </div>
+         <div class = "col-20"></div>
+     </div>
+     <div class = "row">
+        <div class = "col-10"></div>
+        <div class = "col-80">
+            <p>{{pollingsaf[openedPollingId-1].description}}</p>
+        </div>
+        <div class = "col-10"></div>
+    </div>
       <div class="list card" ng-repeat="que in pollingsaf[openedPollingId-1].questions" ng-init="$outer =$index">
           <div class="item">
-            <h2>{{que.question}}</h2>
+            <h2>{{$outer}}. {{que.question}}</h2>
           </div>
           <div class="item item-body">
               <div ng-switch on="que.type">
