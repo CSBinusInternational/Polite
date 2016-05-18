@@ -5,6 +5,8 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
   $scope.uuid = authData.uid;
 
   $scope.currentPollingId = mypollid.currentValue;
-
+  var indexNum = $scope.currentPollingId-1;
+  var indexString = indexNum.toString();
+  $scope.currentPolling =  $firebaseObject(ref.child('pollings').child(indexString));
 
 });
