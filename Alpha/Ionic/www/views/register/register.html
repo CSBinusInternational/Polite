@@ -59,13 +59,13 @@
         </div>
 
         <select name="txtstatus" ng-model="user.status" required>
-          <option selected>Binusian</option>
+          <option>Binusian</option>
           <option>Lecturer</option>
           <option>Other</option>
         </select>
 
       </label>
-      <div class="form-errors" ng-messages="registerForm.txtpassword.$error" ng-if="registerForm.$submitted">
+      <div class="form-errors" ng-messages="registerForm.txtstatus.$error" ng-if="registerForm.$submitted">
         <div class="form-error" ng-message="required">This field is required.</div>
     </div>
     <div class="padding-top">
