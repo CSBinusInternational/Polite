@@ -50,6 +50,15 @@ $stateProvider
           }
       }
     })
+    .state('app.createpolling', {
+      url:'/createpolling',
+      views: {
+        'menuContent': {
+          templateUrl: "views/createpolling/createpolling.html",
+          controller:'myPollingsController'
+        }
+      }
+    })
     .state('app.notifications', {
       url:'/notifications',
       views: {

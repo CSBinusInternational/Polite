@@ -8,14 +8,14 @@
   <ion-content class="padding-top">
     <div class="list">
       <div ng-repeat="polling in pollingsaf | filter:x"  ng-click="viewSummary(polling.id)">
-          <a class="item">
-            <h2>{{polling.title}}</h2>
-            <p>By {{polling.creator}}</p>
-          </a>
+        <a class="item">
+          <h2>{{polling.title}}</h2>
+          <p>By {{polling.creator}}</p>
+        </a>
       </div>
     </div>
   </ion-content>
-  <div class="bar bar-footer bar-assertive">
+  <div class="bar bar-footer bar-assertive" ng-click="showPopup()">
     <h1 class="title">Create New Polling</h1>
   </div>
 </ion-view>
