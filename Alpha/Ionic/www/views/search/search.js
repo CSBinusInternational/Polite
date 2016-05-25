@@ -3,7 +3,7 @@ angular.module('App').controller('searchController', function ($scope, $ionicMod
   var ref = new Firebase(FURL);
   var authData = ref.getAuth();
   $scope.uuid = authData.uid;
-
+  $scope.temp = {searchText: ""};
   $scope.timestamp = new Date().getTime();
   $scope.pollingsaf = $firebaseObject(ref.child('pollings'));
 
@@ -40,13 +40,4 @@ angular.module('App').controller('searchController', function ($scope, $ionicMod
     });
   }
 }
-).filter('objectByKeyValFilter', function () {
-return function (input, filterKey, filterVal) {
-    var filteredInput ={};
-     angular.forEach(input, function(value, key){
-       if(value[filterKey] && value[filterKey] !== filterVal){
-          filteredInput[key]= value;
-        }
-     });
-     return filteredInput;
-}});
+);
