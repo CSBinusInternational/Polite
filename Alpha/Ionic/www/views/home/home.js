@@ -4,17 +4,9 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
   var ref = new Firebase(FURL);
   var authData = ref.getAuth();
   $scope.uuid = authData.uid;
-  /*$scope.result = {
-    "user":"",
-    "pollings": $scope.pollings[openedPollingId-1],
 
-  }
-  $scope.addAnswer = function(){
-    $scope.todo.push({answer:scope.})
-  } */
   $scope.timestamp = new Date().getTime();
-  $scope.pollingsaf =  $firebaseArray(ref.child('pollings'));
-  
+  $scope.pollingsaf = $firebaseObject(ref.child('pollings'));
 
   $ionicModal.fromTemplateUrl('views/home/polling.html', {
     scope: $scope,
@@ -23,9 +15,12 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
     $scope.modal = modal;
   });
 
-  $scope.openModal = function(chosenpolling) {
-    $scope.openedPollingId = chosenpolling;
-    $scope.myanswerset = $scope.pollingsaf[chosenpolling-1].answers[0].answerset;
+  $scope.openModal = function(chosenpollingkey) {
+    $scope.openedPollingKey = chosenpollingkey;
+    $scope.selectedpolling = $firebaseObject(ref.child('pollings').child(chosenpollingkey));
+    $scope.myquestionset = $firebaseArray(ref.child('pollings').child(chosenpollingkey).child('questions'));
+    $scope.myanswerset = $firebaseArray(ref.child('pollings').child(chosenpollingkey).child('answers').child('0').child('answerset'));
+    console.log($scope.myanswerset);
     $scope.modal.show();
   };
 
@@ -40,10 +35,7 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
         "answerset" : $scope.myanswerset
     };
     console.log($scope.submissionData);
-    var indexNum = $scope.openedPollingId-1;
-    var indexString = indexNum.toString();
-    $scope.finalRef = $firebaseArray(ref.child('pollings').child(indexString).child('answers'));
-    console.log($scope.finalRef);
+    $scope.finalRef = $firebaseArray(ref.child('pollings').child($scope.openedPollingKey).child('answers'));
     $scope.finalRef.$add($scope.submissionData).then(function() {
             $scope.closeModal();
     });
