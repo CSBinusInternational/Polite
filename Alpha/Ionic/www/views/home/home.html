@@ -1,29 +1,13 @@
 <ion-view view-title="Browse Polling" hide-back-button="true">
         <ion-content>
           <div class="list">
-            <div ng-repeat="polling in pollingsaf" ng-click="openModal(polling.id)">
+            <div ng-repeat="(key, polling) in pollingsaf" ng-click="openModal(key)">
                 <a class="item item-avatar" href="#">
-                  <!-- For avatar, later on <img src=""> -->
-
                   <h2>{{polling.title}}</h2>
                   <p>{{polling.description}}</p>
-                  <p>By {{polling.creator}}</p>
+                  <p>By {{polling.userid}}</p>
                 </a>
             </div>
           </div>
-
-          <!-- Card version
-          <div class="card" ng-repeat="polling in pollingsaf"  ng-click="openModal(polling.id)">
-                <div class="item item-divider">
-                    {{polling.title}}
-                </div>
-                <div class="item item-text-wrap">
-                  {{polling.description}}
-                </div>
-                <div class="item item-text-wrap">
-                      By {{polling.creator}}
-                </div>
-          </div>
-        -->
         </ion-content>
 </ion-view>

@@ -9,18 +9,18 @@
       <div class = "row">
          <div class = "col-20"></div>
          <div class = "col-60">
-             <h4>{{pollingsaf[openedPollingId-1].title}}</h4>
+             <h4>{{selectedpolling.title}}</h4>
          </div>
          <div class = "col-20"></div>
      </div>
      <div class = "row">
         <div class = "col-10"></div>
         <div class = "col-80">
-            <p>{{pollingsaf[openedPollingId-1].description}}</p>
+            <p>{{selectedpolling.description}}</p>
         </div>
         <div class = "col-10"></div>
     </div>
-      <div class="list card" ng-repeat="que in pollingsaf[openedPollingId-1].questions" ng-init="$outer =$index">
+      <div class="list card" ng-repeat="que in myquestionset" ng-init="$outer =$index">
           <div class="item">
             <h2>{{$outer+1}}. {{que.question}}</h2>
           </div>
@@ -39,7 +39,7 @@
                   </div>
                   <div ng-switch-default>
                     <label class="item item-input">
-                        <input ng-model="myanswerset[$parent.$index]" type="text" placeholder="Input Your Answer Here"/>
+                        <input ng-model="myanswerset[$parent.$index]" type="text" placeholder="Input Your Answer Here" ng-init="myanswerset[$parent.$index]=''"/>
                     </label>
                   </div>
               </div>
