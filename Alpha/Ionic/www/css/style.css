@@ -62,7 +62,7 @@ label.item.valid-lr {
   border-top: none;
 }
 
-.tabs-vertical .tab-nav .tabs > a.tab-item{
+.tab-nav> a.tab-item{
   display:block !important;
   height: auto !important;
   order: 0;
@@ -71,7 +71,6 @@ label.item.valid-lr {
   margin: 20px 0;
 
 }
-
 
 .has-tabs{
   bottom: 0 !important;
