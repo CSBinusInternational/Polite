@@ -1,14 +1,14 @@
 'Use Strict';
-angular.module('App').controller('myPollingsController', function ($scope, $ionicModal, $state ,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, $firebaseArray, Auth, FURL, Utils,mypollid) {
+angular.module('App').controller('myPollingsController', function ($scope, $ionicModal, $state ,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, $firebaseArray, Auth, FURL, Utils,mypollkey) {
   var ref = new Firebase(FURL);
   var authData = ref.getAuth();
   $scope.uuid = authData.uid;
   $scope.temp = {searchText: ""};
   $scope.timestamp = new Date().getTime();
-  $scope.pollingsaf =  $firebaseArray(ref.child('pollings'));
+  $scope.pollingsaf =  $firebaseObject(ref.child('pollings'));
 
-  $scope.viewSummary = function(theid) {
-    mypollid.currentValue=theid;
+  $scope.viewSummary = function(key) {
+    mypollkey.currentValue=key;
     $state.go('app.mypollingsummary');
   };
 

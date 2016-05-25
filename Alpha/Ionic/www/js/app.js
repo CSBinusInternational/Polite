@@ -88,7 +88,7 @@ $stateProvider
     ;
 $urlRouterProvider.otherwise("/login");
 })
-.factory('mypollid',function() {
+.factory('mypollkey',function() {
   return {
         changeCurrentValue: function(i) {
            this.currentValue = i;
