@@ -2,16 +2,16 @@
   <ion-header-bar class="bar bar-subheader" style="height:60px;">
     <label class="item item-input">
       <i class="icon ion-search placeholder-icon"></i>
-      <input type='search' placeholder='Search' ng-model='x'>
+      <input type='search' placeholder='Search' ng-model='searchText'>
     </label>
   </ion-header-bar>
   <ion-content class="padding-top">
     <div class="list">
-      <div ng-repeat="polling in pollingsaf | filter:x"  ng-click="openModal(polling.id)">
-          <a class="item">
+      <div ng-repeat="(key, polling) in pollingsaf | objectByKeyValFilter:'title':'Unity'"  ng-click="openModal(key)">
+          <li class="item">
             <h2>{{polling.title}}</h2>
-            <p>By {{polling.creator}}</p>
-          </a>
+            <p>By {{polling.ownerName}}</p>
+          </li>
       </div>
     </div>
   </ion-content>
