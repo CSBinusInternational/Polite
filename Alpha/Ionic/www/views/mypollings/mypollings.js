@@ -3,7 +3,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   var ref = new Firebase(FURL);
   var authData = ref.getAuth();
   $scope.uuid = authData.uid;
-
+  $scope.temp = {searchText: ""};
   $scope.timestamp = new Date().getTime();
   $scope.pollingsaf =  $firebaseArray(ref.child('pollings'));
 
