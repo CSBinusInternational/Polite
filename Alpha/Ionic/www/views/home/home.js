@@ -7,6 +7,7 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
 
   $scope.timestamp = new Date().getTime();
   $scope.pollingsaf = $firebaseObject(ref.child('pollings'));
+
   $ionicModal.fromTemplateUrl('views/home/polling.html', {
     scope: $scope,
     animation: 'slide-in-up'
