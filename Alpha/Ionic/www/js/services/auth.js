@@ -17,7 +17,10 @@ angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebaseArr
     createProfile: function(uid, user) {
       var profile = {
 				id: uid,
+        fullName: user.fullName,
         email: user.email,
+        username: user.username,
+        status: user.status,
         gravatar: get_gravatar(user.email, 40),
 				registered_in: Date()
       };
@@ -37,7 +40,7 @@ angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebaseArr
     },
 
     register: function(user) {
-      return auth.$createUser({email: user.email, password: user.password})
+      return auth.$createUser({fullName:user.fullName, email: user.email, username:user.username, password: user.password, status:user.status})
         .then(function() {
           // authenticate so we have permission to write to Firebase
           return Auth.login(user);
