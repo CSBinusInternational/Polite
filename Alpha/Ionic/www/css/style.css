@@ -45,3 +45,34 @@ label.item.valid-lr {
   margin-top:90px;
 }
 
+.tabs-vertical .tab-nav.tabs {
+  position: absolute !important;
+  top: 90px !important;
+  height: 100% !important;
+  width: 60px !important;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: center;
+
+  border-left-color: #0c63ee;
+  border-top: none;
+}
+
+.tabs-vertical .tab-nav .tabs > a.tab-item{
+  display:block !important;
+  height: auto !important;
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+  margin: 20px 0;
+}
+
+
+.has-tabs{
+  bottom: 0 !important;
+  left:60px !important;
+}
