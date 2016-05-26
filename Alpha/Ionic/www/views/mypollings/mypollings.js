@@ -5,9 +5,21 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   $scope.uuid = authData.uid;
   $scope.temp = {searchText: ""};
   $scope.timestamp = new Date().getTime();
+
   $scope.pollingsaf =  $firebaseObject(ref.child('pollings'));
   $scope.temppollingsaf = $firebaseObject(ref.child('temppollings'));
-  
+  $scope.getDisplayName = function() {
+      if (authData.provider=='facebook') {
+          return authData.facebook.displayName;
+      }
+      else if (authData.provider=='google') {
+        return authData.google.displayName;
+      }
+      else {
+        return authData.fullName;
+      }
+  };
+
   $scope.viewSummary = function(key) {
     mypollkey.currentValue=key;
     $state.go('app.mypollingsummary');
@@ -56,16 +68,23 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     };
 
   $scope.createChoice = [];
-  $scope.index = 1;
+  $scope.mychoices=[0,1];
+  $scope.index = 2;
+  $scope.addAnswer = function(){
+    $scope.mychoices.push($scope.index);
+    $scope.index++;
+    $scope.modal.show();
+  };
   $scope.mcq = function(){
+    $scope.mychoices=[0,1];
     $scope.createChoice.push(
       {
         number: $scope.index,
         type:'radio',
-        choices:[0,1]
+        choices:$scope.mychoices
       }
     );
-    $scope.index++;
+
     $scope.modal.show();
   };
   $scope.text = function(){
@@ -75,7 +94,6 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
         type:'text'
       }
     );
-    $scope.index++;
     $scope.modal.show();
   };
 
