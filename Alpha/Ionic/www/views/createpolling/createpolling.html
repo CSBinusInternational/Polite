@@ -61,9 +61,41 @@
                 </label>
               </ion-list>
               <div class="item">
-                <button class="button icon-left ion-plus button-positive">Answer</button>
+                <div class="row">
+                  <div class="col"></div>
+                  <div class="col">
+                    <button class="button icon-left ion-plus button-positive" ng-click="addAnswer()">Answer</button>
+                  </div>
+                </div>
               </div>
-
+              <div class="item">
+                <div class="row">
+                  <div class="col-50">
+                    Multiple Answer
+                  </div>
+                  <div class="col-50 col-offset-25">
+                    <label class="toggle toggle-positive">
+                      <input type="checkbox">
+                      <div class="track">
+                        <div class="handle"></div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-50">
+                    Mandatory
+                  </div>
+                  <div class="col-50 col-offset-25">
+                    <label class="toggle toggle-assertive">
+                      <input type="checkbox">
+                      <div class="track">
+                        <div class="handle"></div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
             <div ng-switch-when="text">
             </div>
