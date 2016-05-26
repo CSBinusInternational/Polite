@@ -6,7 +6,8 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   $scope.temp = {searchText: ""};
   $scope.timestamp = new Date().getTime();
   $scope.pollingsaf =  $firebaseObject(ref.child('pollings'));
-
+  $scope.temppollingsaf = $firebaseObject(ref.child('temppollings'));
+  
   $scope.viewSummary = function(key) {
     mypollkey.currentValue=key;
     $state.go('app.mypollingsummary');

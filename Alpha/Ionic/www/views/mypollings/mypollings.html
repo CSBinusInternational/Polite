@@ -12,7 +12,17 @@
             <div ng-if="polling.title.toLowerCase().includes(temp.searchText.toLowerCase())">
               <a class="item">
                 <h2>{{polling.title}}</h2>
-                <p>{{polling.description}}</p>
+                <p>Published Polling</p>
+              </a>
+            </div>
+        </div>
+      </div>
+      <div ng-repeat="(key,polling) in temppollingsaf">
+        <div ng-if="uuid==polling.userid">
+            <div ng-if="polling.title.toLowerCase().includes(temp.searchText.toLowerCase())">
+              <a class="item">
+                <h2>{{polling.title}}</h2>
+                <p>DRAFT</p>
               </a>
             </div>
         </div>
