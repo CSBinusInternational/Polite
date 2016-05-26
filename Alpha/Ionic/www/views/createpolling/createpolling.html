@@ -23,11 +23,11 @@
   </div>
   <ion-tabs class="tabs-icon-top tabs-positive tabs-vertical">
 
-    <ion-tab title="MCQ" icon="ion-stats-bars">
+    <ion-tab title="MCQ" icon="ion-stats-bars" ng-click="mcq()">
 
     </ion-tab>
 
-    <ion-tab title="Text" icon="ion-code-working">
+    <ion-tab title="Text" icon="ion-code-working" ng-click="text()">
 
     </ion-tab>
 
@@ -45,8 +45,32 @@
 
   </ion-tabs>
   <ion-content>
+    <div class="vertical-item">
+      <div class="list card" ng-repeat="cr in createChoice" ng-init="$outer =$index">
+        <div class="item">
+          <label class="item item-input">
+            {{$outer+1}}.&nbsp;<input type="text" placeholder="Question Here">
+          </label>
+        </div>
+        <div class="item item-body">
+          <div ng-switch on="cr.type">
+            <div ng-switch-when="radio">
+              <ion-list>
+                <label ng-repeat="cho in cr.choices" ng-init="$inner = $index" class="item item-input">
+                  <input type="text" placeholder="Answer Here">
+                </label>
+              </ion-list>
+              <div class="item">
+                <button class="button icon-left ion-plus button-positive">Answer</button>
+              </div>
 
-
+            </div>
+            <div ng-switch-when="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </ion-content>
 </ion-modal-view>

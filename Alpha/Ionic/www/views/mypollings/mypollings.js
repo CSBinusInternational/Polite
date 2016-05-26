@@ -53,5 +53,30 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     $scope.closeModal = function() {
       $scope.modal.hide();
     };
+
+  $scope.createChoice = [];
+  $scope.index = 1;
+  $scope.mcq = function(){
+    $scope.createChoice.push(
+      {
+        number: $scope.index,
+        type:'radio',
+        choices:[0,1]
+      }
+    );
+    $scope.index++;
+    $scope.modal.show();
+  };
+  $scope.text = function(){
+    $scope.createChoice.push(
+      {
+        number: $scope.index,
+        type:'text'
+      }
+    );
+    $scope.index++;
+    $scope.modal.show();
+  };
+
 }
 );

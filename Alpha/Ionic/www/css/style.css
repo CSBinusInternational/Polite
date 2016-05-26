@@ -76,3 +76,8 @@ label.item.valid-lr {
   bottom: 0 !important;
   left:60px !important;
 }
+
+.vertical-item{
+  margin-top:60px;
+  margin-left:60px;
+}
