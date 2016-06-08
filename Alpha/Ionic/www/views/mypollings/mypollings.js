@@ -16,7 +16,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
         return authData.google.displayName;
       }
       else {
-        return authData.fullName;
+        return $localStorage.fullName;
       }
   };
 
@@ -30,9 +30,9 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
       answers :new Object(),
       questions : new Array(),
       description:"",
-      ownerName:$scope.getDisplayName(),
-      title:"",
-      userid:$scope.uuid
+      ownerName:null,
+      title:null,
+      userid:null
     };
     var myPopup = $ionicPopup.show({
       template: '<input name="txtpollname" type="text" ng-model="dataa.title" placeholder="Polling Name">',
@@ -55,11 +55,18 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     });
     myPopup.then(function(res) {
       console.log('Tapped!', res);
+      $scope.dataa.ownerName = $scope.getDisplayName();
+      $scope.dataa.userid = $scope.uuid;
       console.log($scope.dataa.title);
+      console.log($scope.dataa);
       var reftemp = ref.child('temppollings');
       $scope.temppollingsarray = $firebaseArray(reftemp);
       $scope.temppollingsarray.$add($scope.dataa).then(function(reftemp) {
-              $scope.thistemppolling = $firebaseObject(ref.child('temppollings').child(reftemp.key()));
+          $scope.thistemppolling = $firebaseObject(ref.child('temppollings').child(reftemp.key()));
+          $scope.thistemppollingque = $firebaseArray(ref.child('temppollings').child(reftemp.key()).child('questions'));
+          $scope.thistemppollingque_obj = $firebaseObject(ref.child('temppollings').child(reftemp.key()).child('questions'));
+          $scope.polingref = ref.child('temppollings').child(reftemp.key());
+          $scope.questionref = ref.child('temppollings').child(reftemp.key()).child('questions');
               /*console.log(reftemp.key());
               console.log($scope.thistemppolling);
               console.log("Added successfully!");*/
@@ -82,35 +89,45 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     $scope.closeModal = function() {
       $scope.modal.hide();
     };
+  // createChoice is actually list of questions!
+  //$scope.createChoice = [];
 
-  $scope.createChoice = [];
-  $scope.mychoices=[0,1];
-  $scope.index = 2;
-  $scope.addAnswer = function(){
-    $scope.mychoices.push($scope.index);
-    $scope.index++;
+// Initialize number of choices in MCQ!
+  //$scope.mychoices=[0,1];
+//  $scope.numchoices = 2;
+
+  $scope.addAnswer = function(arrayindex){
+    //$scope.createChoice[arrayindex].choices.push(null);
+    var currentarr = $firebaseArray($scope.questionref.child(arrayindex).child('choices'));
+    currentarr.$add("");
+    $scope.thistemppollingque.$save();
+    //$scope.thistemppolling.$bindTo($scope, "dataa");
+    //$scope.dataa.questions[arrayindex].choices.push("");
+    console.log($scope.thistemppollingque);
     $scope.modal.show();
   };
+
   $scope.mcq = function(){
-    $scope.mychoices=[0,1];
-    $scope.createChoice.push(
-      {
-        number: $scope.index,
-        type:'radio',
-        choices:$scope.mychoices
-      }
-    );
-    console.log($scope.createChoice);
+    var throwable = {
+      choices:["",""],
+      questions:"",
+      type:'radio'
+    };
+    $scope.thistemppollingque.$add(throwable);
+    $scope.thistemppollingque.$save();
+    //$scope.thistemppolling.$bindTo($scope, "dataa");
+    console.log($scope.thistemppollingque);
     $scope.modal.show();
   };
   $scope.text = function(){
-    $scope.createChoice.push(
-      {
-        number: $scope.index,
-        type:'text'
-      }
-    );
-    console.log($scope.createChoice);
+    var text_throwable = {
+      questions:"",
+      type:'text'
+    };
+    $scope.thistemppollingque.$add(text_throwable);
+    $scope.thistemppollingque.$save();
+    //$scope.thistemppolling.$bindTo($scope, "dataa");
+    console.log($scope.thistemppollingque);
     $scope.modal.show();
   };
 

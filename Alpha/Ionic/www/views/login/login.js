@@ -56,10 +56,12 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
             //console.log(obj.email);
             $localStorage.email = obj.email;
             $localStorage.userkey = userkey;
-
+            $localStorage.fullName = obj.fullName;
               Utils.hide();
               $state.go('app.home');
               console.log("Starter page","Home");
+              console.log(authData);
+              console.log($localStorage.fullName);
 
           })
           .catch(function(error) {

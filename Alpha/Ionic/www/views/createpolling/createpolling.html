@@ -46,7 +46,7 @@
   </ion-tabs>
   <ion-content>
     <div class="vertical-item">
-      <div class="list card" ng-repeat="cr in createChoice" ng-init="$outer =$index">
+      <div class="list card" ng-repeat="(okey, cr) in thistemppollingque_obj track by $index" ng-init="$outer =$index">
         <div class="item">
           <label class="item item-input">
             {{$outer+1}}.&nbsp;<input type="text" placeholder="Question Here">
@@ -56,7 +56,7 @@
           <div ng-switch on="cr.type">
             <div ng-switch-when="radio">
               <ion-list>
-                <label ng-repeat="cho in cr.choices" ng-init="$inner = $index" class="item item-input">
+                <label ng-repeat="cho in cr.choices track by $index" ng-init="$inner = $index" class="item item-input">
                   <input type="text" placeholder="Answer Here">
                 </label>
               </ion-list>
@@ -64,7 +64,7 @@
                 <div class="row">
                   <div class="col"></div>
                   <div class="col">
-                    <button class="button icon-left ion-plus button-positive" ng-click="addAnswer()">Answer</button>
+                    <button class="button icon-left ion-plus button-positive" ng-click="addAnswer(okey)">Answer</button>
                   </div>
                 </div>
               </div>
