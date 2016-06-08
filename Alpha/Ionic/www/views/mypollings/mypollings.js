@@ -100,7 +100,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
         choices:$scope.mychoices
       }
     );
-
+    console.log($scope.createChoice);
     $scope.modal.show();
   };
   $scope.text = function(){
@@ -110,6 +110,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
         type:'text'
       }
     );
+    console.log($scope.createChoice);
     $scope.modal.show();
   };
 
