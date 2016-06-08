@@ -81,3 +81,7 @@ label.item.valid-lr {
   margin-top:60px;
   margin-left:60px;
 }
+/*buat build polling only*/
+.build-polling{
+  margin-top:60px;
+}

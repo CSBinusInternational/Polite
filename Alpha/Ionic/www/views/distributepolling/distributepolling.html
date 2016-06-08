@@ -1,0 +1,58 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-positive" >
+    <h1 class="title">Distribute Polling</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeModal()">Close</button>
+    </div>
+  </ion-header-bar>
+  <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+    <div class="tabs tabs-icon-bottom">
+      <a class="tab-item" href="" ng-click="openModal()">
+        <i class="icon ion-edit"></i>
+        Build
+      </a>
+      <a class="tab-item  active" href="#">
+        <i class="icon ion-eye"></i>
+        Distribute
+      </a>
+      <a class="tab-item" href="" ng-click="openAnalyze()">
+        <i class="icon ion-pie-graph"></i>
+        Analyze
+      </a>
+    </div>
+  </div>
+  <ion-content>
+    <ion-card>
+      <div class="build-polling">
+        <div class="row">
+          <div class="col">
+            <label class = "item item-input item-select item-light">
+              <div class = "input-label">
+                <i class="icon ion-lock-combination">
+                  Visibility
+                </i>
+              </div>
+              <select name="visibility">
+                <option>Public</option>
+              </select>
+
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <!--Deadline Date-->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <!--Invite people-->
+          </div>
+        </div>
+      </div>
+    </ion-card>
+  </ion-content>
+  <div class="bar bar-footer bar-positive">
+    <h1 class="title">Export Polling into Printable Format</h1>
+  </div>
+</ion-modal-view>

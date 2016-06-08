@@ -75,18 +75,49 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     });
   };
 
+  //ini gw edit tambahin distribute + analyze
     $ionicModal.fromTemplateUrl('views/createpolling/createpolling.html', {
       scope: $scope,
-      animation: 'slide-in-up'
+      animation: 'slide-in-left'
     }).then(function(modal) {
       $scope.modal = modal;
     });
 
     $scope.openModal = function() {
       $scope.modal.show();
+      $scope.distributeModal.hide();
+      $scope.analyzeModal.hide();
     };
 
     $scope.closeModal = function() {
+      $scope.modal.hide();
+      $scope.distributeModal.hide();
+      $scope.analyzeModal.hide();
+    };
+
+    $ionicModal.fromTemplateUrl('views/distributepolling/distributepolling.html',{
+      scope: $scope,
+      animation:'slide-in-left'
+    }).then(function(distributeModal){
+      $scope.distributeModal = distributeModal;
+    });
+
+    $scope.openDistribute = function(){
+      $scope.distributeModal.show();
+      $scope.modal.hide();
+      $scope.analyzeModal.hide();
+    };
+
+    $ionicModal.fromTemplateUrl('views/analyzepolling/analyzepolling.html',{
+      scope: $scope,
+      animation:'slide-in-left'
+    }).then(function(analyzeModal){
+      $scope.analyzeModal = analyzeModal;
+    });
+
+    $scope.openAnalyze = function(){
+      $scope.analyzeModal.show();
+      $scope.distributeModal.hide();
       $scope.modal.hide();
     };
   // createChoice is actually list of questions!

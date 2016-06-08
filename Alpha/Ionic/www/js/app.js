@@ -59,6 +59,25 @@ $stateProvider
         }
       }
     })
+    //ini gw tambahin biar bsa di pkaein ng click
+    .state('app.distributepolling', {
+      url:'/distributepolling',
+      views: {
+        'menuContent': {
+          templateUrl: "views/distributepolling/distributepolling.html",
+          controller:'myPollingsController'
+        }
+      }
+    })
+    .state('app.analyzepolling', {
+      url:'/analyzepolling',
+      views: {
+        'menuContent': {
+          templateUrl: "views/analyzepolling/analyzepolling.html",
+          controller:'myPollingsController'
+        }
+      }
+    })
     .state('app.notifications', {
       url:'/notifications',
       views: {
