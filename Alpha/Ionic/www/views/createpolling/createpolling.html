@@ -49,7 +49,7 @@
       <div class="list card" ng-repeat="(okey, cr) in thistemppollingque_obj track by $index" ng-init="$outer =$index">
         <div class="item">
           <label class="item item-input">
-            {{$outer+1}}.&nbsp;<input type="text" placeholder="Question Here">
+            {{$outer+1}}.&nbsp;<input type="text" ng-model="cr.question" ng-change="thistemppollingque_obj.$save(cr)" placeholder="Question Here">
           </label>
         </div>
         <div class="item item-body">
