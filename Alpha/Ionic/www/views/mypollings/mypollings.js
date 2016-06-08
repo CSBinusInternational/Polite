@@ -26,7 +26,14 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   };
 
   $scope.showPopup = function(){
-    $scope.dataa = {};
+    $scope.dataa = {
+      answers :new Object(),
+      questions : new Array(),
+      description:"",
+      ownerName:$scope.getDisplayName(),
+      title:"",
+      userid:$scope.uuid
+    };
     var myPopup = $ionicPopup.show({
       template: '<input name="txtpollname" type="text" ng-model="dataa.title" placeholder="Polling Name">',
       title: 'Create New Polling',
@@ -39,7 +46,6 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
           type: 'button-positive',
           onTap: function(e) {
             if (!$scope.dataa.title) {
-              //don't allow the user to close unless he enters wifi password
               e.preventDefault();
             } else {
               return $scope.openModal();
@@ -49,6 +55,16 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     });
     myPopup.then(function(res) {
       console.log('Tapped!', res);
+      console.log($scope.dataa.title);
+      var reftemp = ref.child('temppollings');
+      $scope.temppollingsarray = $firebaseArray(reftemp);
+      $scope.temppollingsarray.$add($scope.dataa).then(function(reftemp) {
+              $scope.thistemppolling = $firebaseObject(ref.child('temppollings').child(reftemp.key()));
+              /*console.log(reftemp.key());
+              console.log($scope.thistemppolling);
+              console.log("Added successfully!");*/
+      });
+      console.log($scope.dataa);
     });
   };
 
