@@ -110,7 +110,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   $scope.mcq = function(){
     var throwable = {
       choices:["",""],
-      questions:"",
+      question:"",
       type:'radio'
     };
     $scope.thistemppollingque.$add(throwable);
@@ -121,7 +121,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   };
   $scope.text = function(){
     var text_throwable = {
-      questions:"",
+      question:"",
       type:'text'
     };
     $scope.thistemppollingque.$add(text_throwable);
