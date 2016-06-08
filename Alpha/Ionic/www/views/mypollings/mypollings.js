@@ -162,5 +162,13 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     $scope.modal.show();
   };
 
+  $scope.editPolling = function(associatedkey) {
+      $scope.thistemppolling = $firebaseObject(ref.child('temppollings').child(associatedkey));
+      $scope.thistemppollingque = $firebaseArray(ref.child('temppollings').child(associatedkey).child('questions'));
+      $scope.thistemppollingque_obj = $firebaseObject(ref.child('temppollings').child(associatedkey).child('questions'));
+      $scope.polingref = ref.child('temppollings').child(associatedkey);
+      $scope.questionref = ref.child('temppollings').child(associatedkey).child('questions');
+      $scope.openModal();
+  };
 }
 );

@@ -20,7 +20,7 @@
       <div ng-repeat="(key,polling) in temppollingsaf">
         <div ng-if="uuid==polling.userid">
             <div ng-if="polling.title.toLowerCase().includes(temp.searchText.toLowerCase())">
-              <a class="item">
+              <a class="item" ng-click="editPolling(key)">
                 <h2>{{polling.title}}</h2>
                 <p>DRAFT</p>
               </a>
