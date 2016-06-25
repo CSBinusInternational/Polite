@@ -15,10 +15,10 @@
         <i class="icon ion-eye"></i>
         Distribute
       </a>
-      <a class="tab-item" ng-click="openAnalyze()">
+      <!--<a class="tab-item" ng-click="openAnalyze()">
         <i class="icon ion-pie-graph"></i>
         Analysis
-      </a>
+      </a>-->
     </div>
   </div>
   <ion-tabs class="tabs-icon-top tabs-positive tabs-vertical">
@@ -75,7 +75,8 @@
             <div ng-switch-when="radio">
               <ion-list>
                 <label ng-repeat="(innerkey,cho) in cr.choices track by $index" ng-init="$inner = $index" class="item item-input">
-                  <input type="text" ng-model="cho" ng-change="changeMCQ(okey,innerkey,cho)" placeholder="Answer Here">
+                    <input type="text" ng-model="cho" ng-change="changeMCQ(okey,innerkey,cho)" placeholder="Answer Here">
+                  <a class="button button-icon icon ion-minus-circled assertive"></a>
                 </label>
               </ion-list>
               <div class="item">
@@ -114,7 +115,6 @@
             <div ng-switch-when="checkbox">
               <ion-list>
                 <label ng-repeat="(innerkey,cho) in cr.choices track by $index" ng-init="$inner = $index" class="item item-input">
-                  <input type="text" ng-model="cho" ng-change="changeMCQ(okey,innerkey,cho)" placeholder="Answer Here">
                 </label>
               </ion-list>
               <div class="item">

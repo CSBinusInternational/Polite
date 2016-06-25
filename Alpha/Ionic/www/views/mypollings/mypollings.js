@@ -179,13 +179,13 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     //console.log(tempref);
   tempobj.$value = cho;
   tempobj.$save();
-  }
+  };
 
   $scope.changeDescription = function (newdescription) {
     var descriptionObj = new $firebaseObject($scope.polingref.child('description'));
     descriptionObj.$value = newdescription;
     descriptionObj.$save();
-  }
+  };
 
   $scope.changeMultipleAnswer = function (newBool) {
     var multipleanswerObj = new $firebaseObject($scope.polingref.child('multipleanswer'));
@@ -199,11 +199,11 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
       typeObj.$value="radio";
     }
     typeObj.$save();
-  }
+  };
   $scope.deleteQuestion = function (pollingkey) {
     var deletedObj = new $firebaseObject($scope.questionref.child(pollingkey));
     deletedObj.$remove();
-  }
+  };
 
   $scope.deleteLatestChoices = function (akey) {
     var choiceArr = new $firebaseArray($scope.questionref.child(akey).child('choices'));
@@ -224,9 +224,9 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
       choicesList.$remove(item);
     });
 
-  }
+  };
   /*
-    trashclick kalo trash di 1 item divider di pencet, yg kena effect cuma 1 tempeat itu doang 2 yg lain engga.
+    trashclick kalo trash di 1 item divider di pencet, yg kena effect cuma 1 tempaat itu doang 2 yg lain engga.
    */
     $scope.selectItem = false;
   $scope.trashclick = function(){
