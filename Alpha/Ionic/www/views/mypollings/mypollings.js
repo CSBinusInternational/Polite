@@ -142,7 +142,9 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     var throwable = {
       choices:[],
       question:"",
-      type:'radio'
+      type:'radio',
+      multipleanswer:false,
+      mandatory:false
     };
     $scope.thistemppollingque.$add(throwable);
     $scope.thistemppollingque.$save();
@@ -184,6 +186,19 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     descriptionObj.$save();
   }
 
+  $scope.changeMultipleAnswer = function (newBool) {
+    var multipleanswerObj = new $firebaseObject($scope.polingref.child('multipleanswer'));
+    var typeObj = new $firebaseObject($scope.polingref.child('type'));
+    multipleanswerObj.$value=newBool;
+    multipleanswerObj.$save();
+    if (newBool) {
+      typeObj.$value="checkbox";
+    }
+    else {
+      typeObj.$value="radio";
+    }
+    typeObj.$save();
+  }
   $scope.deleteQuestion = function (pollingkey) {
     var deletedObj = new $firebaseObject($scope.questionref.child(pollingkey));
     deletedObj.$remove();

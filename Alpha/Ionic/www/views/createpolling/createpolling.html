@@ -91,19 +91,11 @@
               </div>
               <div class="item">
                 <div class="row">
-                  <div class="col-50">
-                    Multiple Answer
-                  </div>
-                  <div class="col-50 col-offset-25">
-                    <label class="toggle toggle-assertive">
-                      <input type="checkbox">
-                      <div class="track">
-                        <div class="handle"></div>
-                      </div>
-                    </label>
-                  </div>
+                    <ion-toggle ng-model="cr.multipleanswer" toggle-class="toggle-positive" ng-change="changeMultipleAnswer(cr.multipleanswer)">Multiple Answers</ion-toggle> 
                 </div>
                 <div class="row">
+                    <ion-toggle ng-model="cr.mandatory" toggle-class="toggle-positive" ng-change="thistemppollingque_obj.$save(cr)">Mandatory</ion-toggle>
+                  <!--
                   <div class="col-50">
                     Mandatory
                   </div>
@@ -115,6 +107,7 @@
                       </div>
                     </label>
                   </div>
+                -->
                 </div>
               </div>
             </div>
