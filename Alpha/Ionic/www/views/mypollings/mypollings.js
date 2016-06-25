@@ -177,6 +177,12 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   tempobj.$value = cho;
   tempobj.$save();
   }
+
+  $scope.changeDescription = function (newdescription) {
+    var descriptionObj = new $firebaseObject($scope.polingref.child('description'));
+    descriptionObj.$value = newdescription;
+    descriptionObj.$save();
+  }
   /*
     trashclick kalo trash di 1 item divider di pencet, yg kena effect cuma 1 tempeat itu doang 2 yg lain engga.
    */
