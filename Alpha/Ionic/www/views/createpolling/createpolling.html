@@ -74,7 +74,7 @@
             <div ng-switch-when="radio">
               <ion-list>
                 <label ng-repeat="(innerkey,cho) in cr.choices track by $index" ng-init="$inner = $index" class="item item-input">
-                  <input type="text" ng-model="cho" ng-change="thistemppollingque_obj.child(okey).child(innerkey).$save()" placeholder="Answer Here">
+                  <input type="text" ng-model="cho" ng-change="changeMCQ(okey,innerkey,cho)" placeholder="Answer Here">
                 </label>
               </ion-list>
               <div class="item">
