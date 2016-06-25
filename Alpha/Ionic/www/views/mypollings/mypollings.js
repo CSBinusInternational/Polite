@@ -89,7 +89,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
       $scope.analyzeModal.hide();
     };
 
-    $scope.closeModal = function() {
+    $scope.closeModal = function(){
       $scope.modal.hide();
       $scope.distributeModal.hide();
       $scope.analyzeModal.hide();
@@ -169,6 +169,14 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
       $scope.polingref = ref.child('temppollings').child(associatedkey);
       $scope.questionref = ref.child('temppollings').child(associatedkey).child('questions');
       $scope.openModal();
+  };
+
+  /*
+    trashclick kalo trash di 1 item divider di pencet, yg kena effect cuma 1 tempeat itu doang 2 yg lain engga.
+   */
+    $scope.selectItem = false;
+  $scope.trashclick = function(){
+    $scope.selectItem = true;
   };
 }
 );
