@@ -58,10 +58,10 @@
       <!-- description (end) -->
       <div class="list card" ng-repeat="(okey, cr) in thistemppollingque_obj track by $index" ng-init="$outer =$index">
         <div class="item">
-          <!-- cancel icon -->
+          <!-- delete(x) icon -->
           <div class="row">
             <div class="col-offset-90">
-              <a class="button button-icon icon ion-close-circled" style="color:#b3b3b3;"></a>
+              <a class="button button-icon icon ion-close-circled" style="color:#b3b3b3;" ng-click="deleteQuestion(okey)"></a>
             </div>
           </div>
           <div class="row">

@@ -183,6 +183,11 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     descriptionObj.$value = newdescription;
     descriptionObj.$save();
   }
+
+  $scope.deleteQuestion = function (pollingkey) {
+    var deletedObj = new $firebaseObject($scope.questionref.child(pollingkey));
+    deletedObj.$remove();
+  }
   /*
     trashclick kalo trash di 1 item divider di pencet, yg kena effect cuma 1 tempeat itu doang 2 yg lain engga.
    */
