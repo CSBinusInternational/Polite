@@ -46,11 +46,28 @@
   </ion-tabs>
   <ion-content>
     <div class="vertical-item">
+      <!-- description -->
+      <div class="list card">
+        <div class="item item-divider">
+          <label class="item item-input">
+            <i class="icon ion-information-circled placeholder-icon"></i>
+            <input type="text" placeholder="Description Goes Here">
+          </label>
+        </div>
+      </div>
       <div class="list card" ng-repeat="(okey, cr) in thistemppollingque_obj track by $index" ng-init="$outer =$index">
         <div class="item">
+          <!-- cancel icon -->
+          <div class="row">
+            <div class="col-offset-90">
+              <a class="button button-icon icon ion-close-circled" style="color:#b3b3b3;"></a>
+            </div>
+          </div>
+          <div class="row">
           <label class="item item-input">
             {{$outer+1}}.&nbsp;<input type="text" ng-model="cr.question" ng-change="thistemppollingque_obj.$save(cr)" placeholder="Question Here">
           </label>
+          </div>
         </div>
         <div class="item item-body">
           <div ng-switch on="cr.type">
