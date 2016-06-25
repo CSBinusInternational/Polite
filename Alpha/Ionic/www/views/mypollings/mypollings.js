@@ -155,7 +155,8 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   $scope.text = function(){
     var text_throwable = {
       question:"",
-      type:'text'
+      type:'text',
+      mandatory:false
     };
     $scope.thistemppollingque.$add(text_throwable);
     $scope.thistemppollingque.$save();
