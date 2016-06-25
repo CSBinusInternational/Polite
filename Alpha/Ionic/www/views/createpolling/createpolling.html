@@ -82,7 +82,7 @@
                 <div class="row">
                   <div class="col">
                     <!-- delete answer choice -->
-                    <button class="button icon-left ion-minus button-assertive">Answer</button>
+                    <button class="button icon-left ion-minus button-assertive" ng-click="deleteLatestChoices(okey)">Answer</button>
                   </div>
                   <div class="col">
                     <button class="button icon-left ion-plus button-positive" ng-click="addAnswer(okey)">Answer</button>
@@ -91,7 +91,7 @@
               </div>
               <div class="item">
                 <div class="row">
-                    <ion-toggle ng-model="cr.multipleanswer" toggle-class="toggle-positive" ng-change="changeMultipleAnswer(cr.multipleanswer)">Multiple Answers</ion-toggle> 
+                    <ion-toggle ng-model="cr.multipleanswer" toggle-class="toggle-positive" ng-change="changeMultipleAnswer(cr.multipleanswer)">Multiple Answers</ion-toggle>
                 </div>
                 <div class="row">
                     <ion-toggle ng-model="cr.mandatory" toggle-class="toggle-positive" ng-change="thistemppollingque_obj.$save(cr)">Mandatory</ion-toggle>

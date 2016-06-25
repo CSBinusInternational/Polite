@@ -203,6 +203,27 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     var deletedObj = new $firebaseObject($scope.questionref.child(pollingkey));
     deletedObj.$remove();
   }
+
+  $scope.deleteLatestChoices = function (akey) {
+    var choiceArr = new $firebaseArray($scope.questionref.child(akey).child('choices'));
+    var latestkey;
+    // find the latest key O(n). Make it efficient later
+    choiceArr.$loaded()
+    .then(function(data){
+        angular.forEach(data, function(value, key) {
+            latestkey = key;
+        //    console.log("key : " + key);
+        })
+    });
+    var choicesList = new $firebaseArray($scope.questionref.child(akey).child('choices'));
+    choicesList.$loaded().then(function(data) {
+      //console.log("latest key : "+latestkey);
+      //console.log(choicesList);
+      var item = choicesList[latestkey];
+      choicesList.$remove(item);
+    });
+
+  }
   /*
     trashclick kalo trash di 1 item divider di pencet, yg kena effect cuma 1 tempeat itu doang 2 yg lain engga.
    */
