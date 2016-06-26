@@ -76,7 +76,7 @@
               <ion-list>
                 <label ng-repeat="(innerkey,cho) in cr.choices track by $index" ng-init="$inner = $index" class="item item-input">
                     <input type="text" ng-model="cho" ng-change="changeMCQ(okey,innerkey,cho)" placeholder="Answer Here">
-                  <a class="button button-icon icon ion-minus-circled assertive"></a>
+                    <a class="button button-icon icon ion-minus-circled assertive"></a>
                 </label>
               </ion-list>
               <div class="item">
@@ -92,29 +92,18 @@
               </div>
               <div class="item">
                 <div class="row">
-                    <ion-toggle ng-model="cr.multipleanswer" toggle-class="toggle-positive" ng-change="changeMultipleAnswer(cr.multipleanswer)">Multiple Answers</ion-toggle>
+                    <ion-toggle ng-model="cr.multipleanswer" toggle-class="toggle-positive" ng-change="changeMultipleAnswer(cr.multipleanswer,okey)">Multiple Answers</ion-toggle>
                 </div>
                 <div class="row">
                     <ion-toggle ng-model="cr.mandatory" toggle-class="toggle-positive" ng-change="thistemppollingque_obj.$save(cr)">Mandatory</ion-toggle>
-                  <!--
-                  <div class="col-50">
-                    Mandatory
-                  </div>
-                  <div class="col-50 col-offset-25">
-                    <label class="toggle toggle-positive">
-                      <input type="checkbox">
-                      <div class="track">
-                        <div class="handle"></div>
-                      </div>
-                    </label>
-                  </div>
-                -->
                 </div>
               </div>
             </div>
             <div ng-switch-when="checkbox">
               <ion-list>
-                <label ng-repeat="(innerkey,cho) in cr.choices track by $index" ng-init="$inner = $index" class="item item-input">
+                <label ng-repeat="(innerkeytwo,cho) in cr.choices track by $index" ng-init="$innertwo = $index" class="item item-input">
+                    <input type="text" ng-model="cho" ng-change="changeMCQ(okey,innerkeytwo,cho)" placeholder="Answer Here">
+                    <a class="button button-icon icon ion-minus-circled assertive"></a>
                 </label>
               </ion-list>
               <div class="item">
@@ -130,23 +119,10 @@
               </div>
               <div class="item">
                 <div class="row">
-                    <ion-toggle ng-model="cr.multipleanswer" toggle-class="toggle-positive" ng-change="changeMultipleAnswer(cr.multipleanswer)">Multiple Answers</ion-toggle>
+                    <ion-toggle ng-model="cr.multipleanswer" toggle-class="toggle-positive" ng-change="changeMultipleAnswer(cr.multipleanswer,okey)">Multiple Answers</ion-toggle>
                 </div>
                 <div class="row">
                     <ion-toggle ng-model="cr.mandatory" toggle-class="toggle-positive" ng-change="thistemppollingque_obj.$save(cr)">Mandatory</ion-toggle>
-                  <!--
-                  <div class="col-50">
-                    Mandatory
-                  </div>
-                  <div class="col-50 col-offset-25">
-                    <label class="toggle toggle-positive">
-                      <input type="checkbox">
-                      <div class="track">
-                        <div class="handle"></div>
-                      </div>
-                    </label>
-                  </div>
-                -->
                 </div>
               </div>
             </div>

@@ -187,18 +187,27 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     descriptionObj.$save();
   };
 
-  $scope.changeMultipleAnswer = function (newBool) {
-    var multipleanswerObj = new $firebaseObject($scope.polingref.child('multipleanswer'));
-    var typeObj = new $firebaseObject($scope.polingref.child('type'));
-    multipleanswerObj.$value=newBool;
-    multipleanswerObj.$save();
-    if (newBool) {
-      typeObj.$value="checkbox";
-    }
-    else {
-      typeObj.$value="radio";
-    }
-    typeObj.$save();
+  $scope.changeMultipleAnswer = function (newBool,okey) {
+    console.log(newBool);
+    console.log(okey);
+    var multipleanswerObj = new $firebaseObject($scope.questionref.child(okey).child('multipleanswer'));
+    console.log("question object : " + $scope.questionref.child(okey).child('multipleanswer'));
+    multipleanswerObj.$loaded().then(function(data) {
+      multipleanswerObj.$value=newBool;
+      multipleanswerObj.$save();
+    });
+
+    var typeObj = new $firebaseObject($scope.questionref.child(okey).child('type'));
+    console.log("type object : "+$scope.questionref.child(okey).child('type'));
+    typeObj.$loaded().then(function(data) {
+      if (newBool==true) {
+        typeObj.$value="checkbox";
+      }
+      else {
+        typeObj.$value="radio";
+      }
+      typeObj.$save();
+    });
   };
   $scope.deleteQuestion = function (pollingkey) {
     var deletedObj = new $firebaseObject($scope.questionref.child(pollingkey));
