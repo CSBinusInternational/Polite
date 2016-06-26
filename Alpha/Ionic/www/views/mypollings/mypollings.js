@@ -214,6 +214,17 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     deletedObj.$remove();
   };
 
+  /*$scope.deleteOption = function (outerkey,innerkey) {
+    console.log("outer key : "+outerkey);
+    console.log("inner key : "+innerkey);
+    var choicesList = new $firebaseArray($scope.questionref.child(outerkey).child('choices'));
+    choicesList.$loaded().then(function(data) {
+      var item = choicesList[innerkey];
+      choicesList.$remove(item);
+    });
+
+  };
+  */
   $scope.deleteLatestChoices = function (akey) {
     var choiceArr = new $firebaseArray($scope.questionref.child(akey).child('choices'));
     var latestkey;
@@ -234,10 +245,12 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     });
 
   };
+
+
   /*
     trashclick kalo trash di 1 item divider di pencet, yg kena effect cuma 1 tempaat itu doang 2 yg lain engga.
    */
-    $scope.selectItem = false;
+  $scope.selectItem = false;
   $scope.trashclick = function(){
     $scope.selectItem = true;
   };
