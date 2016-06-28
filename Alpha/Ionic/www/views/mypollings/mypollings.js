@@ -103,6 +103,10 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     });
 
     $scope.openDistribute = function(){
+      /*Date Picker*/
+      //$scope.currdate = new Date().toISOString(); <= nor giving gmt +7 but local times
+      console.log($scope.currdate);
+
       $scope.distributeModal.show();
       $scope.modal.hide();
       $scope.analyzeModal.hide();
@@ -245,8 +249,6 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     });
 
   };
-
-
   /*
     trashclick kalo trash di 1 item divider di pencet, yg kena effect cuma 1 tempaat itu doang 2 yg lain engga.
    */
