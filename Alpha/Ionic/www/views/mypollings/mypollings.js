@@ -104,7 +104,20 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
 
     $scope.openDistribute = function(){
       /*Date Picker*/
-      //$scope.currdate = new Date().toISOString(); <= nor giving gmt +7 but local times
+      var now = new Date(),
+          tzo = -now.getTimezoneOffset(),
+          dif = tzo >= 0 ? '+' : '-',
+          pad = function(num) {
+            var norm = Math.abs(Math.floor(num));
+            return (norm < 10 ? '0' : '') + norm;
+          };
+      $scope.currdate =  now.getFullYear()
+          + '-' + pad(now.getMonth()+1)
+          + '-' + pad(now.getDate())
+          + 'T' + pad(now.getHours())
+          + ':' + pad(now.getMinutes())
+          + ':' + pad(now.getSeconds());
+
       console.log($scope.currdate);
 
       $scope.distributeModal.show();
