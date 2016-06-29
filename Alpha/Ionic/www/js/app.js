@@ -116,7 +116,8 @@ $urlRouterProvider.otherwise("/login");
   };
 })
 // Changue this for your Firebase App URL.
-.constant('FURL', 'https://darmawanfirstapp.firebaseio.com/')
+//.constant('FURL', 'https://darmawanfirstapp.firebaseio.com/')
+.constant('FURL', 'https://pollite.firebaseio.com/')
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
