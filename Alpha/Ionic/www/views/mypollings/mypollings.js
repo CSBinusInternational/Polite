@@ -272,9 +272,9 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
       deadlineObj.$save();
       console.log("Temp Polling Object : " + temppollingObj);
       var pollingsparentArr = $firebaseArray(ref.child('pollings'));
-      console.log("Pollings reference Object : " + pollingsparent);
+      console.log("Pollings reference Object : " + pollingsparentArr);
       pollingsparentArr.$add(temppollingObj);
-      pollingsparent.$save();
+      pollingsparentArr.$save();
       temppollingObj.$remove();
   };
 
