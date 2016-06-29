@@ -29,6 +29,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     $scope.dataa = {
       answers :new Object(),
       questions : new Array(),
+      deadline : new Date(),
       description:"",
       ownerName:null,
       title:null,
@@ -262,6 +263,21 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     });
 
   };
+
+  $scope.distributePoll = function() {
+      var temppollingObj = $scope.thistemppolling;
+      var deadlineObj = new $firebaseObject($scope.polingref.child('deadline'));
+      deadlineObj.$value = $scope.currdate;
+      console.log("Deadline Date : " + $scope.currdate);
+      deadlineObj.$save();
+      console.log("Temp Polling Object : " + temppollingObj);
+      var pollingsparentArr = $firebaseArray(ref.child('pollings'));
+      console.log("Pollings reference Object : " + pollingsparent);
+      pollingsparentArr.$add(temppollingObj);
+      pollingsparent.$save();
+      temppollingObj.$remove();
+  };
+
   /*
     trashclick kalo trash di 1 item divider di pencet, yg kena effect cuma 1 tempaat itu doang 2 yg lain engga.
    */
