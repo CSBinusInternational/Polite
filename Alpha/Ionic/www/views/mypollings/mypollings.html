@@ -22,18 +22,46 @@
       <div ng-repeat="(key,polling) in pollingsaf"  ng-click="viewSummary(key)">
         <div ng-if="uuid==polling.userid">
             <div ng-if="polling.title.toLowerCase().includes(temp.searchText.toLowerCase())">
-              <a class="item">
-                <h2>{{polling.title}}</h2>
-              </a>
+                <div ng-if="date1<=getPollDate(polling.deadline)">
+                  <a class="item">
+                    <h2>{{polling.title}}</h2>
+                    <p>{{getPollDate(polling.deadline)}}</p>
+                    <p>{{polling.deadline}}</p>
+                  </a>
+                </div>
             </div>
         </div>
       </div>
+
+      <div class="item item-divider">
+        <div class="row">
+          <div class="col col-center">
+            Finished
+          </div>
+          <!-- kalo di pencet dia munculin checkbox di sebelah kiri buat delete + ganti tulisan di bawah jadi delete terus button trash ini jadi "cancel"-->
+          <div class="col-offset-50">
+            <a class="button button-icon icon ion-trash-a"></a>
+          </div>
+        </div>
+      </div>
+      <div ng-repeat="(key,polling) in pollingsaf"  ng-click="viewSummary(key)">
+        <div ng-if="uuid==polling.userid">
+            <div ng-if="polling.title.toLowerCase().includes(temp.searchText.toLowerCase())">
+                <div ng-if="date1>getPollDate(polling.deadline)">
+                  <a class="item">
+                    <h2>{{polling.title}}</h2>
+                  </a>
+                </div>
+            </div>
+        </div>
+      </div>
+
       <!-- delete polling note(buat controller): muncul kalo ada pollingnya aja. -->
-      <div ng-repeat="temppolling in temppollingsaf">
+      <!--<div ng-repeat="temppolling in temppollingsaf">
         <div ng-if="temppoling.userid == uuid">
 
         </div>
-      </div>
+      </div> -->
       <div class="item item-divider">
         <div class="row">
           <div class="col col-center">

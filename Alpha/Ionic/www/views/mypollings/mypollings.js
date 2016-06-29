@@ -5,6 +5,12 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   $scope.uuid = authData.uid;
   $scope.temp = {searchText: ""};
   $scope.timestamp = new Date().getTime();
+  $scope.date1 = new Date($scope.timestamp);
+  console.log("Current timestamp : " + $scope.date1);
+  $scope.getPollDate = function(stamp) {
+    var rvalue = new Date(stamp);
+    return rvalue;
+  }
 
   $scope.pollingsaf =  $firebaseObject(ref.child('pollings'));
   $scope.temppollingsaf = $firebaseObject(ref.child('temppollings'));
@@ -270,28 +276,24 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
       var temppollingObj = $scope.thistemppolling;
       console.log("Temp Polling Object : " + temppollingObj);
       var deadlineObj = new $firebaseObject($scope.polingref.child('deadline'));
-      deadlineObj.$loaded().then(function(data) {
-        deadlineObj.$value = $scope.currdate.getTime();
+      deadlineObj.$loaded().then(function(){
+        var val = $scope.currdate.getTime();
+        deadlineObj.$value = val;
         deadlineObj.$save();
+        var pollingsparentArr = $firebaseArray(ref.child('pollings'));
+        pollingsparentArr.$loaded().then(function(){
+          console.log("Pollings reference Array : " + pollingsparentArr);
+          pollingsparentArr.$add(temppollingObj);
+          pollingsparentArr.$save();
+          temppollingObj.$remove();
+        });
       });
-      var pollingsparentArr = $firebaseArray(ref.child('pollings'));
-      pollingsparentArr.$loaded().then(function(){
-        console.log("Pollings reference Array : " + pollingsparentArr);
-        pollingsparentArr.$add(temppollingObj);
-        pollingsparentArr.$save();
-        temppollingObj.$remove();
-      });
-
       $scope.analyzeModal.hide();
       $scope.distributeModal.hide();
       $scope.modal.hide();
       var successPopup = $ionicPopup.alert({
          title: 'Polling Distribution Success',
          template: 'Your polling has been successfully published'
-      });
-
-      alertPopup.then(function(res) {
-
       });
   };
   /*
