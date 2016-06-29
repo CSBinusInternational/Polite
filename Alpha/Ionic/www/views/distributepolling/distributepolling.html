@@ -43,12 +43,13 @@
             <!--Deadline Date-->
             <label class="item item-input">
               <i class="icon ion-calendar"></i>
-              <input type="datetime-local" value='{{currdate}}' min='{{currdate}}' required>
+              <input type="datetime-local" ng-model="currdate">
             </label>
           </div>
         </div>
         <div class="row">
           <div class="col">
+            <p>{{currdate | date: "yyyy-MM-ddTHH:mm:ss"}}</p>
             <!--Invite people-->
           </div>
         </div>

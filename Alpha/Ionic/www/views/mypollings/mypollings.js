@@ -29,7 +29,8 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     $scope.dataa = {
       answers :new Object(),
       questions : new Array(),
-      deadline : new Date(),
+      deadline : "new Date().getTime()",
+      visibility : "public",
       description:"",
       ownerName:null,
       title:null,
@@ -112,15 +113,16 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
             var norm = Math.abs(Math.floor(num));
             return (norm < 10 ? '0' : '') + norm;
           };
-      $scope.currdate =  now.getFullYear()
+      var tempcurr = now.getFullYear()
           + '-' + pad(now.getMonth()+1)
           + '-' + pad(now.getDate())
           + 'T' + pad(now.getHours())
           + ':' + pad(now.getMinutes())
           + ':' + pad(now.getSeconds());
-
-      console.log($scope.currdate);
-
+      $scope.currdate =  new Date(now.getFullYear(),pad(now.getMonth()+1),pad(now.getDate()),pad(now.getHours()),pad(now.getMinutes()),pad(now.getSeconds()),0);
+      var deadlineObj = new $firebaseObject($scope.polingref.child('deadline'));
+      deadlineObj.$value = $scope.currdate.getTime();
+      deadlineObj.$save();
       $scope.distributeModal.show();
       $scope.modal.hide();
       $scope.analyzeModal.hide();
@@ -266,18 +268,23 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
 
   $scope.distributePoll = function() {
       var temppollingObj = $scope.thistemppolling;
-      var deadlineObj = new $firebaseObject($scope.polingref.child('deadline'));
-      deadlineObj.$value = $scope.currdate;
-      console.log("Deadline Date : " + $scope.currdate);
-      deadlineObj.$save();
       console.log("Temp Polling Object : " + temppollingObj);
+      var deadlineObj = new $firebaseObject($scope.polingref.child('deadline'));
+      deadlineObj.$loaded().then(function(data) {
+        deadlineObj.$value = $scope.currdate.getTime();
+        deadlineObj.$save();
+      });
       var pollingsparentArr = $firebaseArray(ref.child('pollings'));
-      console.log("Pollings reference Object : " + pollingsparentArr);
-      pollingsparentArr.$add(temppollingObj);
-      pollingsparentArr.$save();
-      temppollingObj.$remove();
+      pollingsparentArr.$loaded().then(function(){
+        console.log("Pollings reference Array : " + pollingsparentArr);
+        pollingsparentArr.$add(temppollingObj);
+        pollingsparentArr.$save();
+      });
+      //temppollingObj.$remove();
+      $scope.analyzeModal.hide();
+      $scope.distributeModal.hide();
+      $scope.modal.hide();
   };
-
   /*
     trashclick kalo trash di 1 item divider di pencet, yg kena effect cuma 1 tempaat itu doang 2 yg lain engga.
    */
