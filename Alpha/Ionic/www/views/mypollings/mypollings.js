@@ -279,11 +279,20 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
         console.log("Pollings reference Array : " + pollingsparentArr);
         pollingsparentArr.$add(temppollingObj);
         pollingsparentArr.$save();
+        temppollingObj.$remove();
       });
-      //temppollingObj.$remove();
+
       $scope.analyzeModal.hide();
       $scope.distributeModal.hide();
       $scope.modal.hide();
+      var successPopup = $ionicPopup.alert({
+         title: 'Polling Distribution Success',
+         template: 'Your polling has been successfully published'
+      });
+
+      alertPopup.then(function(res) {
+
+      });
   };
   /*
     trashclick kalo trash di 1 item divider di pencet, yg kena effect cuma 1 tempaat itu doang 2 yg lain engga.
