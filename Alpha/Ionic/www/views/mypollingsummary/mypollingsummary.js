@@ -13,7 +13,7 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
 
   $ionicModal.fromTemplateUrl('views/mypollingsummary/analysis.html', {
     scope: $scope,
-    animation: 'slide-in-left'
+    animation: 'slide-in-up'
   }).then(function(modal) {
     $scope.modal = modal;
   });
@@ -24,6 +24,10 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
 
   $scope.closeModal = function(){
     $scope.modal.hide();
+  };
+
+  $scope.openAnalysis = function() {
+      $scope.openModal();
   };
 
   $scope.getTotalQuestions = function(questionlist) {
