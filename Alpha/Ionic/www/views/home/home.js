@@ -19,8 +19,34 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
     $scope.openedPollingKey = chosenpollingkey;
     $scope.selectedpolling = $firebaseObject(ref.child('pollings').child(chosenpollingkey));
     $scope.myquestionset = $firebaseArray(ref.child('pollings').child(chosenpollingkey).child('questions'));
-    $scope.myanswerset = $firebaseArray(ref.child('pollings').child(chosenpollingkey).child('answers').child('0').child('answerset'));
-    console.log($scope.myanswerset);
+    $scope.myanswerset = [];
+    $scope.myquestionset.$loaded()
+    .then(function(data){
+        angular.forEach(data, function(value, key) {
+            console.log("Value Type : " + value.type);
+            console.log("Key : " + key);
+            if (value.type=="radio") {
+              $scope.tempradio = [];
+              angular.forEach(value.type.choices, function(cvalue,ckey) {
+                $scope.tempradio.push(false);
+              });
+              $scope.myanswerset.push($scope.tempradio);
+            }
+            if (value.type=="checkbox") {
+              $scope.tempcheckbox = [];
+              angular.forEach(value.type.choices, function(cvalue,ckey) {
+                $scope.tempcheckbox.push(false);
+              });
+              $scope.myanswerset.push($scope.tempradio);
+
+            }
+            if (value.type=="text") {
+              $scope.myanswerset.push("Test");
+            }
+        })
+    });
+    //$scope.myanswerset = $firebaseArray(ref.child('pollings').child(chosenpollingkey).child('answers').child('0').child('answerset'));
+    console.log("The answer set array : "+$scope.myanswerset);
     $scope.modal.show();
   };
 
