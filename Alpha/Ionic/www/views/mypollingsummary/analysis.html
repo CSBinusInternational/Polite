@@ -19,18 +19,20 @@
              <h4>{{$index+1}}. {{eachquestion.question}}</h4>
              <div ng-switch on="eachquestion.type">
                  <div ng-switch-when="radio">
-                    <p>This is radio</p>
+
                  </div>
                  <div ng-switch-when="checkbox">
-                    <p>This is checkbox</p>
+
                  </div>
                  <div ng-switch-default>
+                   <!--
                    <ion-scroll direction="y" style=" height: 200px">
                      <div class="list card">
                         <div class="item" ng-repeat="">
-                          
+
                         </div>
                     </div>
+                  -->
                  </div>
              </div>
          </div>
