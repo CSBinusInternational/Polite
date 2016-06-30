@@ -19,6 +19,7 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
     $scope.openedPollingKey = chosenpollingkey;
     $scope.selectedpolling = $firebaseObject(ref.child('pollings').child(chosenpollingkey));
     $scope.myquestionset = $firebaseArray(ref.child('pollings').child(chosenpollingkey).child('questions'));
+    //$scope.questionref = ref.child('pollings').child(chosenpollingkey).child('questions');
     $scope.myanswerset = [];
     $scope.myquestionset.$loaded()
     .then(function(data){
@@ -54,6 +55,15 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
     $scope.modal.hide();
   };
 
+  $scope.getMandatoryIndicator = function(isMandatory) {
+      if (isMandatory) {
+        return "*";
+      }
+      else {
+        return "";
+      }
+  };
+
   $scope.submitPolling = function() {
     $scope.submissionData = {
         "uid" : $scope.uuid,
@@ -61,10 +71,25 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
         "answerset" : $scope.myanswerset
     };
     console.log($scope.submissionData);
-    $scope.finalRef = $firebaseArray(ref.child('pollings').child($scope.openedPollingKey).child('answers'));
-    $scope.finalRef.$add($scope.submissionData).then(function() {
-            $scope.closeModal();
+    var isPopup = false;
+    angular.forEach($scope.myanswerset, function(value,key) {
+        if (value==null || value=="") {
+            isPopup = true;
+        }
     });
+    if (isPopup) {
+      var mandatoryPopup = $ionicPopup.alert({
+         title: 'Warning',
+         template: 'Please fill all of the mandatory fields'
+      });
+    }
+    else {
+      $scope.finalRef = $firebaseArray(ref.child('pollings').child($scope.openedPollingKey).child('answers'));
+      $scope.finalRef.$add($scope.submissionData).then(function() {
+              $scope.closeModal();
+      });
+    }
+
   }
 }
 );

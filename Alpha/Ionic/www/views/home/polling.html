@@ -22,7 +22,7 @@
     </div>
       <div class="list card" ng-repeat="que in myquestionset" ng-init="$outer =$index">
           <div class="item">
-            <h2>{{$outer+1}}. {{que.question}}</h2>
+            <h2>{{$outer+1}}. {{que.question}} {{getMandatoryIndicator(que.mandatory)}}</h2>
           </div>
           <div class="item item-body">
               <div ng-switch on="que.type">
