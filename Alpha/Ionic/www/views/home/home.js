@@ -41,7 +41,7 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
 
             }
             if (value.type=="text") {
-              $scope.myanswerset.push("Test");
+              $scope.myanswerset.push("");
             }
         })
     });
