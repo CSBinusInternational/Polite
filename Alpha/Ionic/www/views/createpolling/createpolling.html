@@ -49,9 +49,11 @@
       <!-- description -->
       <div class="list card">
         <div class="item item-divider">
+          <p>Description</p>
           <label class="item item-input">
-            <i class="icon ion-information-circled placeholder-icon"></i>
-            <input type="text" ng-model="thistemppolling.description" ng-change="changeDescription(thistemppolling.description)" placeholder="Description Goes Here">
+            <!-- <i class="icon ion-information-circled placeholder-icon"></i> -->
+            <!--<input type="text" ng-model="thistemppolling.description" ng-change="changeDescription(thistemppolling.description)" placeholder="Description Goes Here"> -->
+            <textarea ng-model="thistemppolling.description" ng-change="changeDescription(thistemppolling.description)" placeholder="Add your description here" rows=3></textarea>
           </label>
         </div>
       </div>
