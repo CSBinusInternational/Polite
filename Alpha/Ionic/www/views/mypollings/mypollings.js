@@ -172,7 +172,15 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
       multipleanswer:false,
       mandatory:false
     };
-    $scope.thistemppollingque.$add(throwable);
+    $scope.thistemppollingque.$add(throwable).then(function(p){
+      console.log(p.key());
+      var thekey = p.key();
+      var initialQuestions = 4;
+      for (var k=0;k<initialQuestions;k++) {
+        $scope.addAnswer(thekey);
+      }
+
+    });
     $scope.thistemppollingque.$save();
     //$scope.thistemppolling.$bindTo($scope, "dataa");
     console.log($scope.thistemppollingque);
