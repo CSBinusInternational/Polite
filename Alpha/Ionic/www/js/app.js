@@ -86,6 +86,14 @@ $stateProvider
           }
       }
     })
+    .state('app.about', {
+      url:'/about',
+      views: {
+        'menuContent': {
+          templateUrl: "views/about/about.html",
+        }
+      }
+    })
     .state('app.mypollingsummary', {
       url:'/mypollingsummary/',
       views: {
