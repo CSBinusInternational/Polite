@@ -175,7 +175,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     $scope.thistemppollingque.$add(throwable).then(function(p){
       console.log(p.key());
       var thekey = p.key();
-      var initialQuestions = 4;
+      var initialQuestions = 2;
       for (var k=0;k<initialQuestions;k++) {
         $scope.addAnswer(thekey);
       }
@@ -198,6 +198,37 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     console.log($scope.thistemppollingque);
     $scope.modal.show();
   };
+  /* likert function for Range*/
+  $scope.likert = function(){
+    $scope.setStep = 4;
+    $scope.curRange =2;
+    var likert_throwable = {
+      question:"",
+      type:'range',
+      step:Number($scope.setStep),
+      currStep:Number($scope.curRange),
+      mandatory:false
+    };
+    $scope.thistemppollingque.$add(likert_throwable);
+    $scope.thistemppollingque.$save();
+    $scope.modal.show();
+  };
+    /* likert function for Range (end) */
+
+  /*maxSteps*/
+  $scope.maxSteps = 4;
+  $scope.detSteps = function(p){
+    $scope.setStep = p;
+    $scope.curRange =Math.floor((Number(p)+1)/2);
+  };
+  /*maxSteps (end)*/
+
+  /*changeRange*/
+  $scope.changeRange = function(p){
+    $scope.curRange = p;
+    console.log($scope.curRange);
+  };
+  /*changeRange (end)*/
 
   $scope.editPolling = function(associatedkey) {
       $scope.thistemppolling = $firebaseObject(ref.child('temppollings').child(associatedkey));

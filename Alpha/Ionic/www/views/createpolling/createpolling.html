@@ -31,11 +31,11 @@
 
     </ion-tab>
 
-    <!--<ion-tab title="True/False" icon="ion-contrast">
+    <ion-tab title="Likert" icon="ion-arrow-resize" ng-click="likert()">
 
     </ion-tab>
 
-    <ion-tab title="Contact" icon="ion-speedometer">
+    <!--<ion-tab title="True/False" icon="ion-contrast">
 
     </ion-tab>
 
@@ -135,6 +135,59 @@
                 </div>
               </div>
             </div>
+            <!-- -likert -->
+            <div ng-switch-when="range">
+              <div class="item range range-positive">
+                <!--To display-->
+                <!--<div class="row">
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col">{{curRange}}</div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                </div>-->
+                <!--To display (end)-->
+                <i class="icon ion-sad"></i>
+                <!--ini kurang display range on change(ng-change)-->
+                <input type="range" min="1" max='{{setStep}}' value='{{curRange}}'> <!-- ini bebas jadi bisa di atur di js-->
+                <i class="icon ion-happy"></i>
+              </div>
+              <!-- gw gatau ini bagus ato engga, kalo ada ide lebih bagus kasi tau aja-->
+              <!-- ini buat tulisan di kiri, tenga, kanan nya (kalo mau kasi)-->
+              <div class="item">
+                <ion-list>
+                  <label class="item item-input item-select">
+                    <div class="input-label">
+                      Steps
+                    </div>
+                    <select ng-model="maxSteps" ng-change="detSteps(maxSteps)">
+                      <option>3</option>
+                      <option selected>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                    </select>
+                  </label>
+                  <label class="item item-input">
+                    <input type="text" placeholder="Left">
+                  </label>
+                  <label class="item item-input">
+                    <input type="text" placeholder="Middle">
+                  </label>
+                  <label class="item item-input">
+                    <input type="text" placeholder="Right">
+                  </label>
+                </ion-list>
+              </div>
+              <!-- gw gatau ini bagus ato engga, kalo ada ide lebih bagus kasi tau aja (end)-->
+              <div class="item">
+                <div class="row">
+                  <ion-toggle ng-model="cr.mandatory" toggle-class="toggle-positive" ng-change="thistemppollingque_obj.$save(cr)">Mandatory</ion-toggle>
+                </div>
+              </div>
+            </div>
+            <!-- -likert (end) -->
           </div>
         </div>
       </div>
