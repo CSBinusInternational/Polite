@@ -1,0 +1,42 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-positive" >
+    <h1 class="title">Analysis</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeModal()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class = "row">
+         <div class = "col-10"></div>
+         <div class = "col-80">
+             <h2>{{currentPolling.title}}</h2>
+         </div>
+         <div class = "col-10"></div>
+    </div>
+    <div class = "row" ng-repeat="eachquestion in currentPolling.questions">
+         <div class = "col-10"></div>
+         <div class = "col-80">
+             <h4>{{$index+1}}. {{eachquestion.question}}</h4>
+             <div ng-switch on="eachquestion.type">
+                 <div ng-switch-when="radio">
+
+                 </div>
+                 <div ng-switch-when="checkbox">
+
+                 </div>
+                 <div ng-switch-default>
+                   <!--
+                   <ion-scroll direction="y" style=" height: 200px">
+                     <div class="list card">
+                        <div class="item" ng-repeat="">
+
+                        </div>
+                    </div>
+                  -->
+                 </div>
+             </div>
+         </div>
+         <div class = "col-10"></div>
+    </div>
+  </ion-content>
+</ion-modal-view>

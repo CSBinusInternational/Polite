@@ -1,0 +1,13 @@
+<ion-view view-title="Browse Polling" hide-back-button="true">
+        <ion-content>
+          <div class="list">
+            <div ng-repeat="(key, polling) in pollingsaf" ng-click="openModal(key)">
+                <a class="item item-avatar" href="#">
+                  <h2>{{polling.title}}</h2>
+                  <p>{{polling.description}}</p>
+                  <p>By {{polling.ownerName}}</p>
+                </a>
+            </div>
+          </div>
+        </ion-content>
+</ion-view>

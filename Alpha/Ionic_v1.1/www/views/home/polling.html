@@ -1,0 +1,50 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-positive" >
+      <h1 class="title">Fill Polling</h1>
+      <div class="buttons">
+        <button class="button button-clear" ng-click="closeModal()">Close</button>
+    </div>
+    </ion-header-bar>
+    <ion-content>
+      <div class = "row">
+         <div class = "col-20"></div>
+         <div class = "col-60">
+             <h4>{{selectedpolling.title}}</h4>
+         </div>
+         <div class = "col-20"></div>
+     </div>
+     <div class = "row">
+        <div class = "col-10"></div>
+        <div class = "col-80">
+            <p>{{selectedpolling.description}}</p>
+        </div>
+        <div class = "col-10"></div>
+    </div>
+      <div class="list card" ng-repeat="que in myquestionset" ng-init="$outer =$index">
+          <div class="item">
+            <h2>{{$outer+1}}. {{que.question}} {{getMandatoryIndicator(que.mandatory)}}</h2>
+          </div>
+          <div class="item item-body">
+              <div ng-switch on="que.type">
+                  <div ng-switch-when="radio">
+                    <ion-list>
+                      <ion-radio ng-repeat="cho in que.choices" ng-init="$inner = $index" ng-value="$inner" ng-model="myanswerset[$outer]" name={{$outer}}>{{cho}}</ion-radio>
+                      <!--ion-radio ng-repeat="cho in que.choices track by $index" name="asd+$index" ng-model="myanswerset[$parent.$index]" ng-value="myanswerset[$parent.$index]">{{cho}}</ion-radio-->
+                    </ion-list>
+                  </div>
+                  <div ng-switch-when="checkbox">
+                      <ion-list ng-repeat="cho in que.choices" ng-init="$inner=$index">
+                        <ion-checkbox ng-model="myanswerset[$outer][$inner]">{{cho}}</ion-checkbox>
+                      </ion-list>
+                  </div>
+                  <div ng-switch-default>
+                    <label class="item item-input">
+                        <input ng-model="myanswerset[$parent.$index]" type="text" placeholder="Input Your Answer Here" ng-init="myanswerset[$parent.$index]=''"/>
+                    </label>
+                  </div>
+              </div>
+          </div>
+    </div>
+      <input type="submit" class="button button-block button-positive" value="Submit" ng-click="submitPolling()">
+    </ion-content>
+  </ion-modal-view>

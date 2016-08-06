@@ -1,0 +1,197 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-positive" >
+    <h1 class="title">Create Polling</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeModal()">Close</button>
+    </div>
+  </ion-header-bar>
+  <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+    <div class="tabs tabs-icon-bottom">
+      <a class="tab-item active" href="#">
+        <i class="icon ion-edit"></i>
+        Build
+      </a>
+      <a class="tab-item" ng-click="openDistribute()">
+        <i class="icon ion-eye"></i>
+        Distribute
+      </a>
+      <!--<a class="tab-item" ng-click="openAnalyze()">
+        <i class="icon ion-pie-graph"></i>
+        Analysis
+      </a>-->
+    </div>
+  </div>
+  <ion-tabs class="tabs-icon-top tabs-positive tabs-vertical">
+
+    <ion-tab title="MCQ" icon="ion-stats-bars" ng-click="mcq()">
+
+    </ion-tab>
+
+    <ion-tab title="Text" icon="ion-code-working" ng-click="text()">
+
+    </ion-tab>
+
+    <ion-tab title="Likert" icon="ion-arrow-resize" ng-click="likert()">
+
+    </ion-tab>
+
+    <!--<ion-tab title="True/False" icon="ion-contrast">
+
+    </ion-tab>
+
+    <ion-tab title="Picture" icon="ion-image">
+
+    </ion-tab>-->
+
+  </ion-tabs>
+  <ion-content>
+    <div class="vertical-item">
+      <!-- description -->
+      <div class="list card">
+        <div class="item item-divider">
+          <p>Description</p>
+          <label class="item item-input">
+            <!-- <i class="icon ion-information-circled placeholder-icon"></i> -->
+            <!--<input type="text" ng-model="thistemppolling.description" ng-change="changeDescription(thistemppolling.description)" placeholder="Description Goes Here"> -->
+            <textarea ng-model="thistemppolling.description" ng-change="changeDescription(thistemppolling.description)" placeholder="Add your description here" rows=3></textarea>
+          </label>
+        </div>
+      </div>
+      <!-- description (end) -->
+      <div class="list card" ng-repeat="(okey, cr) in thistemppollingque_obj track by $index" ng-init="$outer =$index">
+        <div class="item">
+          <!-- delete(x) icon -->
+          <div class="row">
+            <div class="col-offset-90">
+              <a class="button button-icon icon ion-close-circled" style="color:#b3b3b3;" ng-click="deleteQuestion(okey)"></a>
+            </div>
+          </div>
+          <div class="row">
+          <label class="item item-input">
+            {{$outer+1}}.&nbsp;<input type="text" ng-model="cr.question" ng-change="thistemppollingque_obj.$save(cr)" placeholder="Question Here">
+          </label>
+          </div>
+        </div>
+        <div class="item item-body">
+          <div ng-switch on="cr.type">
+            <div ng-switch-when="radio">
+              <ion-list>
+                <label ng-repeat="(innerkey,cho) in cr.choices track by $index" ng-init="$inner = $index" class="item item-input">
+                    <input type="text" ng-model="cho" ng-change="changeMCQ(okey,innerkey,cho)" placeholder="Option Here">
+                    <!-- <button class="button button-icon icon ion-minus-circled assertive" ng-click="$parent.deleteOption(okey,innerkey)"></button> -->
+                </label>
+              </ion-list>
+              <div class="item">
+                <div class="row">
+                  <div class="col">
+                    <!-- delete answer choice -->
+                    <button class="button icon-left ion-minus button-assertive" ng-click="deleteLatestChoices(okey)">Answer</button>
+                  </div>
+                  <div class="col">
+                    <button class="button icon-left ion-plus button-positive" ng-click="addAnswer(okey)">Answer</button>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="row">
+                    <ion-toggle ng-model="cr.multipleanswer" toggle-class="toggle-positive" ng-change="changeMultipleAnswer(cr.multipleanswer,okey)">Multiple Answers</ion-toggle>
+                </div>
+                <div class="row">
+                    <ion-toggle ng-model="cr.mandatory" toggle-class="toggle-positive" ng-change="thistemppollingque_obj.$save(cr)">Mandatory</ion-toggle>
+                </div>
+              </div>
+            </div>
+            <div ng-switch-when="checkbox">
+              <ion-list>
+                <label ng-repeat="(innerkeytwo,cho) in cr.choices track by $index" ng-init="$innertwo = $index" class="item item-input">
+                    <input type="text" ng-model="cho" ng-change="changeMCQ(okey,innerkeytwo,cho)" placeholder="Option Here">
+                    <!-- <button class="button button-icon icon ion-minus-circled assertive" ng-click="$parent.deleteOption(okey,innerkeytwo)"></button> -->
+                </label>
+              </ion-list>
+              <div class="item">
+                <div class="row">
+                  <div class="col">
+                    <!-- delete answer choice -->
+                    <button class="button icon-left ion-minus button-assertive" ng-click="deleteLatestChoices(okey)">Answer</button>
+                  </div>
+                  <div class="col">
+                    <button class="button icon-left ion-plus button-positive" ng-click="addAnswer(okey)">Answer</button>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="row">
+                    <ion-toggle ng-model="cr.multipleanswer" toggle-class="toggle-positive" ng-change="changeMultipleAnswer(cr.multipleanswer,okey)">Multiple Answers</ion-toggle>
+                </div>
+                <div class="row">
+                    <ion-toggle ng-model="cr.mandatory" toggle-class="toggle-positive" ng-change="thistemppollingque_obj.$save(cr)">Mandatory</ion-toggle>
+                </div>
+              </div>
+            </div>
+            <div ng-switch-when="text">
+              <div class="item">
+                <div class="row">
+                  <ion-toggle ng-model="cr.mandatory" toggle-class="toggle-positive" ng-change="thistemppollingque_obj.$save(cr)">Mandatory</ion-toggle>
+                </div>
+              </div>
+            </div>
+            <!-- -likert -->
+            <div ng-switch-when="range">
+              <div class="item range range-positive">
+                <!--To display-->
+                <!--<div class="row">
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col">{{curRange}}</div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                </div>-->
+                <!--To display (end)-->
+                <i class="icon ion-sad"></i>
+                <!--ini kurang display range on change(ng-change)-->
+                <input type="range" min="1" max='{{setStep}}' value='{{curRange}}'> <!-- ini bebas jadi bisa di atur di js-->
+                <i class="icon ion-happy"></i>
+              </div>
+              <!-- gw gatau ini bagus ato engga, kalo ada ide lebih bagus kasi tau aja-->
+              <!-- ini buat tulisan di kiri, tenga, kanan nya (kalo mau kasi)-->
+              <div class="item">
+                <ion-list>
+                  <label class="item item-input item-select">
+                    <div class="input-label">
+                      Steps
+                    </div>
+                    <select ng-model="maxSteps" ng-change="detSteps(maxSteps)">
+                      <option>3</option>
+                      <option selected>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                    </select>
+                  </label>
+                  <label class="item item-input">
+                    <input type="text" placeholder="Left">
+                  </label>
+                  <label class="item item-input">
+                    <input type="text" placeholder="Middle">
+                  </label>
+                  <label class="item item-input">
+                    <input type="text" placeholder="Right">
+                  </label>
+                </ion-list>
+              </div>
+              <!-- gw gatau ini bagus ato engga, kalo ada ide lebih bagus kasi tau aja (end)-->
+              <div class="item">
+                <div class="row">
+                  <ion-toggle ng-model="cr.mandatory" toggle-class="toggle-positive" ng-change="thistemppollingque_obj.$save(cr)">Mandatory</ion-toggle>
+                </div>
+              </div>
+            </div>
+            <!-- -likert (end) -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-modal-view>
