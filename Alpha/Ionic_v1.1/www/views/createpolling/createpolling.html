@@ -149,7 +149,7 @@
                 <!--To display (end)-->
                 <i class="icon ion-sad"></i>
                 <!--ini kurang display range on change(ng-change)-->
-                <input type="range" min="1" max='{{setStep}}' value='{{curRange}}'> <!-- ini bebas jadi bisa di atur di js-->
+                <input type="range" min="1" max='{{setStep}}' ng-model="curRange" ng-change="changeRange(curRange)" disabled> <!-- ini bebas jadi bisa di atur di js-->
                 <i class="icon ion-happy"></i>
               </div>
               <!-- gw gatau ini bagus ato engga, kalo ada ide lebih bagus kasi tau aja-->

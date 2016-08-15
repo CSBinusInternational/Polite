@@ -220,6 +220,10 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   $scope.detSteps = function(p){
     $scope.setStep = p;
     $scope.curRange =Math.floor((Number(p)+1)/2);
+
+    console.log("Step : "+$scope.setStep);
+    console.log("Range : "+$scope.curRange);
+
   };
   /*maxSteps (end)*/
 
@@ -227,6 +231,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   $scope.changeRange = function(p){
     $scope.curRange = p;
     console.log($scope.curRange);
+
   };
   /*changeRange (end)*/
 
