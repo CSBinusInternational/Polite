@@ -8,13 +8,20 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
   $scope.timestamp = new Date().getTime();
   $scope.pollingsaf = $firebaseObject(ref.child('pollings'));
 
-  $ionicModal.fromTemplateUrl('views/about/about.html', {
+  $ionicModal.fromTemplateUrl('views/about/term.html', {
     scope: $scope,
     animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal = modal;
+  }).then(function(term) {
+    $scope.term = term;
   });
+  $scope.openTerm = function() {
+    $scope.term.show();
+    console.log("open");
+  };
 
+  $scope.closeTerm = function(){
+    $scope.term.hide();
+  };
 
 }
 );
