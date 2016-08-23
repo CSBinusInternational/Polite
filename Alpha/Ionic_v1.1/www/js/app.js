@@ -90,7 +90,8 @@ $stateProvider
       url:'/about',
       views: {
         'menuContent': {
-          templateUrl: "views/about/about.html"
+          templateUrl: "views/about/about.html",
+          controller:'aboutController'
         }
       }
     })
