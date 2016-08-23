@@ -200,8 +200,8 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   };
   /* likert function for Range*/
   $scope.likert = function(){
-    $scope.setStep = 4;
-    $scope.curRange =2;
+    $scope.setStep =Number(4);
+    $scope.curRange =Number(2);
     var likert_throwable = {
       question:"",
       type:'range',
@@ -217,13 +217,91 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
 
   /*maxSteps*/
   $scope.maxSteps = 4;
+
+  /*words*/
+  $scope.rangeIndex = [];
+  $scope.rangeLeft ="";
+  $scope.rangeMid ="";
+  $scope.rangeRight ="";
+
+  /*sizing first time*/
+  for(var i = 1; i <= $scope.maxSteps;i++){
+    $scope.rangeIndex.push(i+".");
+  }
+
+  /*dynamic wording (start)*/
+  $scope.changeLeft = function(word){
+    $scope.rangeLeft= word;
+    $scope.rangeIndex[0] = "1. "+$scope.rangeLeft;
+  };
+
+  $scope.changeMid = function(word){
+    $scope.rangeMid= word;
+    if($scope.rangeIndex.length%2 === 1){
+      var i = Math.ceil($scope.rangeIndex.length/2);
+      $scope.rangeIndex[i-1] = i+". "+$scope.rangeMid;
+    }
+  };
+
+  $scope.changeRight = function(word){
+    $scope.rangeRight= word;
+    var i = $scope.rangeIndex.length;
+    $scope.rangeIndex[i-1] = i+". "+$scope.rangeRight;
+  };
+    /*dynamic wording (end)*/
+
   $scope.detSteps = function(p){
-    $scope.setStep = p;
-    $scope.curRange =Math.floor((Number(p)+1)/2);
+/*    $scope.setStep = Number(p);
+    $scope.curRange =Number(Math.floor((Number(p)+1)/2));*/
 
-    console.log("Step : "+$scope.setStep);
-    console.log("Range : "+$scope.curRange);
+    //if p is odd number
+    if(p%2 === 1){
+      //old middle by the last array
+      var mid = Math.ceil($scope.rangeIndex.length/2);
+      //will be the new middle by var p
+      var newMid = Math.ceil(p/2);
+      //make middle and last index in the array empty first
+      $scope.rangeIndex[mid-1] =mid + ". ";
+      $scope.rangeIndex[$scope.rangeIndex.length-1] = $scope.rangeIndex.length+". ";
 
+      //adding array size
+      if($scope.rangeIndex.length<p){
+        for(var i = $scope.rangeIndex.length+1; i <= p;i++) {
+          $scope.rangeIndex.push(i + ".");
+        }
+      }
+      //substract array size
+      else if($scope.rangeIndex.length>p){
+        for(var i = $scope.rangeIndex.length; i> p;i--){
+          $scope.rangeIndex.pop();
+        }
+      }
+      //give the middle and last index in the array the last value
+      $scope.rangeIndex[newMid-1]= newMid +". "+$scope.rangeMid;
+      $scope.rangeIndex[p-1] = p+". "+$scope.rangeRight;
+    }
+    //if p is even number
+    else{
+      //middle calculation
+      var mid = Math.ceil($scope.rangeIndex.length/2);
+      //emptying middle and last index in the array first
+      $scope.rangeIndex[mid-1] =mid + ". ";
+      $scope.rangeIndex[$scope.rangeIndex.length-1] = $scope.rangeIndex.length+". ";
+      //adding array size
+      if($scope.rangeIndex.length<p){
+        for(i = $scope.rangeIndex.length+1 ; i <=p ;i++){
+         $scope.rangeIndex.push(i+".");
+        }
+      }
+      //substract array size
+      else if($scope.rangeIndex.length>p){
+        for(var i = $scope.rangeIndex.length; i> p;i--){
+          $scope.rangeIndex.pop();
+        }
+      }
+      //give last index the last value
+      $scope.rangeIndex[p-1] = p+". "+$scope.rangeRight;
+    }
   };
   /*maxSteps (end)*/
 

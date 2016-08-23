@@ -137,21 +137,26 @@
             </div>
             <!-- -likert -->
             <div ng-switch-when="range">
-              <div class="item range range-positive">
-                <!--To display-->
-                <!--<div class="row">
+              <!--<div class="item range range-positive">
+                &lt;!&ndash;To display&ndash;&gt;
+                &lt;!&ndash;<div class="row">
                   <div class="col"></div>
                   <div class="col"></div>
                   <div class="col">{{curRange}}</div>
                   <div class="col"></div>
                   <div class="col"></div>
-                </div>-->
-                <!--To display (end)-->
+                </div>&ndash;&gt;
+                &lt;!&ndash;To display (end)&ndash;&gt;
                 <i class="icon ion-sad"></i>
-                <!--ini kurang display range on change(ng-change)-->
-                <input type="range" min="1" max='{{setStep}}' ng-model="curRange" ng-change="changeRange(curRange)" disabled> <!-- ini bebas jadi bisa di atur di js-->
+                &lt;!&ndash;ini kurang display range on change(ng-change)&ndash;&gt;
+                <input type="range" min="1" max='{{setStep}}' ng-model="curRange" ng-change="changeRange(curRange)" disabled> &lt;!&ndash; ini bebas jadi bisa di atur di js&ndash;&gt;
                 <i class="icon ion-happy"></i>
-              </div>
+              </div>-->
+                <div ng-repeat="item in rangeIndex">
+                  <div class="row">
+                    <button class="button">{{item}}</button>
+                  </div>
+                </div>
               <!-- gw gatau ini bagus ato engga, kalo ada ide lebih bagus kasi tau aja-->
               <!-- ini buat tulisan di kiri, tenga, kanan nya (kalo mau kasi)-->
               <div class="item">
@@ -170,13 +175,13 @@
                     </select>
                   </label>
                   <label class="item item-input">
-                    <input type="text" placeholder="Left">
+                    <input type="text" ng-model="rangeLeft" ng-change="changeLeft(rangeLeft)" placeholder="Left">
                   </label>
                   <label class="item item-input">
-                    <input type="text" placeholder="Middle">
+                    <input type="text" ng-model="rangeMid" ng-change="changeMid(rangeMid)" placeholder="Middle">
                   </label>
                   <label class="item item-input">
-                    <input type="text" placeholder="Right">
+                    <input type="text" ng-model="rangeRight" ng-change="changeRight(rangeRight)" placeholder="Right">
                   </label>
                 </ion-list>
               </div>

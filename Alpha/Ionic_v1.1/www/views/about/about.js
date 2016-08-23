@@ -8,19 +8,19 @@ angular.module('App').controller('aboutController', function ($scope, $ionicModa
   $scope.timestamp = new Date().getTime();
   $scope.pollingsaf = $firebaseObject(ref.child('pollings'));
 
-  $ionicModal.fromTemplateUrl('views/about/term.html', {
+  $ionicModal.fromTemplateUrl('views/about/terms.html', {
     scope: $scope,
     animation: 'slide-in-up'
-  }).then(function(term) {
-    $scope.term = term;
+  }).then(function(terms) {
+    $scope.terms = terms;
   });
-  $scope.openTerm = function() {
-    $scope.term.show();
+  $scope.openTerms = function() {
+    $scope.terms.show();
     console.log("open");
   };
 
-  $scope.closeTerm = function(){
-    $scope.term.hide();
+  $scope.closeTerms = function(){
+    $scope.terms.hide();
   };
 
 }
