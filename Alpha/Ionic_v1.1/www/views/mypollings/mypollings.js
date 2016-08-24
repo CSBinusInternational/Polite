@@ -35,7 +35,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     $scope.dataa = {
       answers :new Object(),
       questions : new Array(),
-      deadline : "new Date().getTime()",
+      deadline : new Date().getTime(),
       visibility : "public",
       description:"",
       ownerName:null,
@@ -70,11 +70,11 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
       var reftemp = ref.child('temppollings');
       $scope.temppollingsarray = $firebaseArray(reftemp);
       $scope.temppollingsarray.$add($scope.dataa).then(function(reftemp) {
-          $scope.thistemppolling = $firebaseObject(ref.child('temppollings').child(reftemp.key()));
-          $scope.thistemppollingque = $firebaseArray(ref.child('temppollings').child(reftemp.key()).child('questions'));
-          $scope.thistemppollingque_obj = $firebaseObject(ref.child('temppollings').child(reftemp.key()).child('questions'));
-          $scope.polingref = ref.child('temppollings').child(reftemp.key());
-          $scope.questionref = ref.child('temppollings').child(reftemp.key()).child('questions');
+      $scope.thistemppolling = $firebaseObject(ref.child('temppollings').child(reftemp.key()));
+      $scope.thistemppollingque = $firebaseArray(ref.child('temppollings').child(reftemp.key()).child('questions'));
+      $scope.thistemppollingque_obj = $firebaseObject(ref.child('temppollings').child(reftemp.key()).child('questions'));
+      $scope.polingref = ref.child('temppollings').child(reftemp.key());
+      $scope.questionref = ref.child('temppollings').child(reftemp.key()).child('questions');
               /*console.log(reftemp.key());
               console.log($scope.thistemppolling);
               console.log("Added successfully!");*/
