@@ -85,3 +85,26 @@ label.item.valid-lr {
 .build-polling{
   margin-top:60px;
 }
+.makeRange{
+  border:3px solid #0c63ee;
+  -webkit-border-radius:50%;
+  -moz-border-radius:50%;
+  border-radius:50%;
+  padding:5px 10px;
+}
+.rowRange{
+  margin-bottom:10px;
+}
+
+.vLine{
+  border:2px solid #000;
+  height:100%;
+  width:0px;
+  padding-bottom:10px;
+  margin-left:8%;
+}
+
+.blueLine{
+  border-color:#0c63ee;
+  margin-left:10%;
+}
