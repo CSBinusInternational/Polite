@@ -152,45 +152,78 @@
                 <input type="range" min="1" max='{{setStep}}' ng-model="curRange" ng-change="changeRange(curRange)" disabled> &lt;!&ndash; ini bebas jadi bisa di atur di js&ndash;&gt;
                 <i class="icon ion-happy"></i>
               </div>-->
-                <div ng-repeat="item in rangeIndex">
-                  <div class="row">
-                    <button class="button">{{item}}</button>
+                <div ng-repeat="(innerKeyLikert,item) in cr.steps track by $index" ng-init="$likert = $index">
+                  <div class="row" ng-if="cr.length%2 == 0">
+                    <button class="button" ng-if="$likert == 0">
+                      {{item}}. {{cr.left}}
+                    </button>
+                    <button class="button" ng-if="$likert == cr.length-1">
+                      {{item}}. {{cr.right}}
+                    </button>
+                    <button class="button" ng-if="$likert!= 0 && $likert != cr.length-1">
+                      {{item}}
+                    </button>
+                  </div>
+                  <div class="row" ng-if="cr.length%2 != 0">
+                    <button class="button" ng-if="$likert == 0">
+                      {{item}}. {{cr.left}}
+                    </button>
+                    <button class="button" ng-if="$likert == (cr.length-1)/2">
+                      {{item}}. {{cr.mid}}
+                    </button>
+                    <button class="button" ng-if="$likert == cr.length-1">
+                      {{item}}. {{cr.right}}
+                    </button>
+                    <button class="button" ng-if="$likert!= 0 && $likert != cr.length-1 && $likert != (cr.length-1)/2">
+                      {{item}}
+                    </button>
                   </div>
                 </div>
               <!-- gw gatau ini bagus ato engga, kalo ada ide lebih bagus kasi tau aja-->
               <!-- ini buat tulisan di kiri, tenga, kanan nya (kalo mau kasi)-->
-              <div class="item">
-                <ion-list>
-                  <label class="item item-input item-select">
-                    <div class="input-label">
-                      Steps
+                <div class="item">
+                  <ion-list>
+                    <label class="item item-input item-select">
+                      <div class="input-label">
+                        Steps
+                      </div>
+                      <select ng-model="cr.length" ng-change="detSteps(okey,cr.length)">
+                        <option>3</option>
+                        <option selected>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                      </select>
+                    </label>
+                    <div ng-if="cr.length%2 == 0">
+                      <label class="item item-input">
+                        <input type="text" ng-model="cr.left" ng-change="changeLeft(okey,cr.left)" placeholder="Top Tag">
+                      </label>
+                      <label class="item item-input">
+                        <input type="text" ng-model="cr.right" ng-change="changeRight(okey,cr.right)" placeholder="Bottom Tag">
+                      </label>
                     </div>
-                    <select ng-model="maxSteps" ng-change="detSteps(maxSteps)">
-                      <option>3</option>
-                      <option selected>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                    </select>
-                  </label>
-                  <label class="item item-input">
-                    <input type="text" ng-model="rangeLeft" ng-change="changeLeft(rangeLeft)" placeholder="Left">
-                  </label>
-                  <label class="item item-input">
-                    <input type="text" ng-model="rangeMid" ng-change="changeMid(rangeMid)" placeholder="Middle">
-                  </label>
-                  <label class="item item-input">
-                    <input type="text" ng-model="rangeRight" ng-change="changeRight(rangeRight)" placeholder="Right">
-                  </label>
-                </ion-list>
-              </div>
-              <!-- gw gatau ini bagus ato engga, kalo ada ide lebih bagus kasi tau aja (end)-->
-              <div class="item">
-                <div class="row">
-                  <ion-toggle ng-model="cr.mandatory" toggle-class="toggle-positive" ng-change="thistemppollingque_obj.$save(cr)">Mandatory</ion-toggle>
+                    <div ng-if="cr.length%2 == 1">
+                      <label class="item item-input">
+                        <input type="text" ng-model="cr.left" ng-change="changeLeft(okey,cr.left)" placeholder="Top Tag">
+                      </label>
+                      <label class="item item-input">
+                        <input type="text" ng-model="cr.mid" ng-change="changeMid(okey,cr.mid)" placeholder="Middle Tag">
+                      </label>
+                      <label class="item item-input">
+                        <input type="text" ng-model="cr.right" ng-change="changeRight(okey,cr.right)" placeholder="Bottom Tag">
+                      </label>
+                    </div>
+
+                  </ion-list>
                 </div>
-              </div>
+              <!-- gw gatau ini bagus ato engga, kalo ada ide lebih bagus kasi tau aja (end)-->
+                <div class="item">
+                  <div class="row">
+                    <ion-toggle ng-model="cr.mandatory" toggle-class="toggle-positive" ng-change="thistemppollingque_obj.$save(cr)">Mandatory</ion-toggle>
+                  </div>
+                </div>
             </div>
             <!-- -likert (end) -->
           </div>

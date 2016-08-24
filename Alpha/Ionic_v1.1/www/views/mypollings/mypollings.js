@@ -30,8 +30,8 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     mypollkey.currentValue=key;
     $state.go('app.mypollingsummary');
   };
-
   $scope.showPopup = function(){
+
     $scope.dataa = {
       answers :new Object(),
       questions : new Array(),
@@ -198,120 +198,90 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     console.log($scope.thistemppollingque);
     $scope.modal.show();
   };
-  /* likert function for Range*/
-  $scope.likert = function(){
-    $scope.setStep =Number(4);
-    $scope.curRange =Number(2);
-    var likert_throwable = {
-      question:"",
-      type:'range',
-      step:Number($scope.setStep),
-      currStep:Number($scope.curRange),
-      mandatory:false
-    };
-    $scope.thistemppollingque.$add(likert_throwable);
+
+  $scope.addSteps = function(arrayindex,index){
+    var currentarr = $firebaseArray($scope.questionref.child(arrayindex).child('steps'));
+    currentarr.$add(index);
     $scope.thistemppollingque.$save();
     $scope.modal.show();
   };
-    /* likert function for Range (end) */
 
-  /*maxSteps*/
-  $scope.maxSteps = 4;
+    $scope.deleteSteps = function (arrayindex,index) {
+      var currentarr = new $firebaseArray($scope.questionref.child(arrayindex).child('steps'));
+      currentarr.$loaded().then(function(data) {
+        var item = currentarr[index];
+        currentarr.$remove(item);
+      });
+    };
 
-  /*words*/
-  $scope.rangeIndex = [];
-  $scope.rangeLeft ="";
-  $scope.rangeMid ="";
-  $scope.rangeRight ="";
-
-  /*sizing first time*/
-  for(var i = 1; i <= $scope.maxSteps;i++){
-    $scope.rangeIndex.push(i+".");
-  }
+  $scope.likert = function(){
+    $scope.maxSteps = 4;
+    var likert_throwable = {
+      question:"",
+      type:'range',
+      steps:[],
+      left:"",
+      mid:"",
+      right:"",
+      length:$scope.maxSteps,
+      mandatory:false
+    };
+    $scope.thistemppollingque.$add(likert_throwable).then(function(p){
+      var theKey = p.key();
+      var setStep = 4;
+      for(var i = 1 ; i <= setStep; i++){
+        $scope.addSteps(theKey,i);
+      }
+    });
+    $scope.thistemppollingque.$save();
+    $scope.modal.show();
+  };
 
   /*dynamic wording (start)*/
-  $scope.changeLeft = function(word){
-    $scope.rangeLeft= word;
-    $scope.rangeIndex[0] = "1. "+$scope.rangeLeft;
+  $scope.changeLeft = function(outerkey,word){
+    var tempobj= new $firebaseObject($scope.questionref.child(outerkey).child('left'));
+    tempobj.$value = word;
+    tempobj.$save();
   };
 
-  $scope.changeMid = function(word){
-    $scope.rangeMid= word;
-    if($scope.rangeIndex.length%2 === 1){
-      var i = Math.ceil($scope.rangeIndex.length/2);
-      $scope.rangeIndex[i-1] = i+". "+$scope.rangeMid;
-    }
+  $scope.changeMid = function(outerkey,word){
+    var tempobj= new $firebaseObject($scope.questionref.child(outerkey).child('mid'));
+    tempobj.$value = word;
+    tempobj.$save();
   };
 
-  $scope.changeRight = function(word){
-    $scope.rangeRight= word;
-    var i = $scope.rangeIndex.length;
-    $scope.rangeIndex[i-1] = i+". "+$scope.rangeRight;
+  $scope.changeRight = function(outerkey,word){
+    var tempobj= new $firebaseObject($scope.questionref.child(outerkey).child('right'));
+    tempobj.$value = word;
+    tempobj.$save();
   };
     /*dynamic wording (end)*/
 
-  $scope.detSteps = function(p){
-/*    $scope.setStep = Number(p);
-    $scope.curRange =Number(Math.floor((Number(p)+1)/2));*/
-
-    //if p is odd number
-    if(p%2 === 1){
-      //old middle by the last array
-      var mid = Math.ceil($scope.rangeIndex.length/2);
-      //will be the new middle by var p
-      var newMid = Math.ceil(p/2);
-      //make middle and last index in the array empty first
-      $scope.rangeIndex[mid-1] =mid + ". ";
-      $scope.rangeIndex[$scope.rangeIndex.length-1] = $scope.rangeIndex.length+". ";
-
+  $scope.detSteps = function(arrayindex,p){
+    var currRange = $firebaseArray($scope.questionref.child(arrayindex).child('steps'));
+    currRange.$loaded().then(function(rangeIndex){
       //adding array size
-      if($scope.rangeIndex.length<p){
-        for(var i = $scope.rangeIndex.length+1; i <= p;i++) {
-          $scope.rangeIndex.push(i + ".");
+      if(rangeIndex.length<p){
+        for(var i = rangeIndex.length+1; i <= p;i++) {
+          $scope.addSteps(arrayindex,i);
         }
       }
       //substract array size
-      else if($scope.rangeIndex.length>p){
-        for(var i = $scope.rangeIndex.length; i> p;i--){
-          $scope.rangeIndex.pop();
+      else if(rangeIndex.length>p){
+        for(var i = rangeIndex.length; i> p;i--){
+          $scope.deleteSteps(arrayindex,i-1);
         }
       }
-      //give the middle and last index in the array the last value
-      $scope.rangeIndex[newMid-1]= newMid +". "+$scope.rangeMid;
-      $scope.rangeIndex[p-1] = p+". "+$scope.rangeRight;
-    }
-    //if p is even number
-    else{
-      //middle calculation
-      var mid = Math.ceil($scope.rangeIndex.length/2);
-      //emptying middle and last index in the array first
-      $scope.rangeIndex[mid-1] =mid + ". ";
-      $scope.rangeIndex[$scope.rangeIndex.length-1] = $scope.rangeIndex.length+". ";
-      //adding array size
-      if($scope.rangeIndex.length<p){
-        for(i = $scope.rangeIndex.length+1 ; i <=p ;i++){
-         $scope.rangeIndex.push(i+".");
-        }
+      if(p%2 == 0){
+        var midWord = new $firebaseObject($scope.questionref.child(arrayindex).child('mid'));
+        midWord.$value = "";
+        midWord.$save();
       }
-      //substract array size
-      else if($scope.rangeIndex.length>p){
-        for(var i = $scope.rangeIndex.length; i> p;i--){
-          $scope.rangeIndex.pop();
-        }
-      }
-      //give last index the last value
-      $scope.rangeIndex[p-1] = p+". "+$scope.rangeRight;
-    }
+      var updateStep = new $firebaseObject($scope.questionref.child(arrayindex).child('length'));
+      updateStep.$value = p;
+      updateStep.$save();
+    });
   };
-  /*maxSteps (end)*/
-
-  /*changeRange*/
-  $scope.changeRange = function(p){
-    $scope.curRange = p;
-    console.log($scope.curRange);
-
-  };
-  /*changeRange (end)*/
 
   $scope.editPolling = function(associatedkey) {
       $scope.thistemppolling = $firebaseObject(ref.child('temppollings').child(associatedkey));
