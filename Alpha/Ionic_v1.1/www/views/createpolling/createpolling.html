@@ -154,15 +154,29 @@
               </div>-->
                 <div ng-repeat="(innerKeyLikert,item) in cr.steps track by $index" ng-init="$likert = $index">
                   <div class="row" ng-if="cr.length%2 == 0">
-                    <ion-radio ng-value="item" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == 0">{{item}}. {{cr.left}}</ion-radio>
-                    <ion-radio ng-value="item" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == cr.length-1">{{item}}. {{cr.right}}</ion-radio>
-                    <ion-radio ng-value="item" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert!= 0 && $likert != cr.length-1">{{item}}.</ion-radio>
+                    <button class="button" ng-if="$likert == 0">
+                      {{item}}. {{cr.left}}
+                    </button>
+                    <button class="button" ng-if="$likert == cr.length-1">
+                      {{item}}. {{cr.right}}
+                    </button>
+                    <button class="button" ng-if="$likert!= 0 && $likert != cr.length-1">
+                      {{item}}
+                    </button>
                   </div>
                   <div class="row" ng-if="cr.length%2 != 0">
-                    <ion-radio ng-value="item" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == 0">{{item}}. {{cr.left}}</ion-radio>
-                    <ion-radio ng-value="item" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == (cr.length-1)/2"> {{item}}. {{cr.mid}}</ion-radio>
-                    <ion-radio ng-value="item" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == cr.length-1">{{item}}. {{cr.right}}</ion-radio>
-                    <ion-radio ng-value="item" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert!= 0 && $likert != cr.length-1 && $likert != (cr.length-1)/2">{{item}}.</ion-radio>
+                    <button class="button" ng-if="$likert == 0">
+                      {{item}}. {{cr.left}}
+                    </button>
+                    <button class="button" ng-if="$likert == (cr.length-1)/2">
+                      {{item}}. {{cr.mid}}
+                    </button>
+                    <button class="button" ng-if="$likert == cr.length-1">
+                      {{item}}. {{cr.right}}
+                    </button>
+                    <button class="button" ng-if="$likert!= 0 && $likert != cr.length-1 && $likert != (cr.length-1)/2">
+                      {{item}}
+                    </button>
                   </div>
                 </div>
               <!-- gw gatau ini bagus ato engga, kalo ada ide lebih bagus kasi tau aja-->

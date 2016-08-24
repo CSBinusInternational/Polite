@@ -34,7 +34,7 @@
                   </div>
                   <div ng-switch-when="checkbox">
                       <ion-list ng-repeat="cho in que.choices" ng-init="$inner=$index">
-                        <ion-checkbox ng-model="myanswerset[$outer][$inner]">{{cho}}</ion-checkbox>
+                        <ion-checkbox ng-model="myanswerset[$outer][$inner]" name="{{$inner}}">{{cho}}</ion-checkbox>
                       </ion-list>
                   </div>
                   <div ng-switch-when="range">

@@ -39,7 +39,6 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
                 $scope.tempcheckbox.push(false);
               });
               $scope.myanswerset.push($scope.tempradio);
-
             }
             if (value.type=="text") {
               $scope.myanswerset.push("");
