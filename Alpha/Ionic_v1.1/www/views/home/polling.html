@@ -16,7 +16,7 @@
      <div class = "row">
         <div class = "col-10"></div>
         <div class = "col-80">
-            <p>{{selectedpolling.description}}</p>
+            <p>{{selectedpolling.desqueiption}}</p>
         </div>
         <div class = "col-10"></div>
     </div>
@@ -36,6 +36,21 @@
                       <ion-list ng-repeat="cho in que.choices" ng-init="$inner=$index">
                         <ion-checkbox ng-model="myanswerset[$outer][$inner]">{{cho}}</ion-checkbox>
                       </ion-list>
+                  </div>
+                  <div ng-switch-when="range">
+                    <ion-list ng-repeat="item in que.steps" ng-init ="$likert = $index">
+                      <div class="row" ng-if="que.length%2 == 0">
+                        <ion-radio ng-value="item" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == 0">{{item}}. {{que.left}}</ion-radio>
+                        <ion-radio ng-value="item" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == que.length-1">{{item}}. {{que.right}}</ion-radio>
+                        <ion-radio ng-value="item" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert!= 0 && $likert != que.length-1">{{item}}.</ion-radio>
+                      </div>
+                      <div class="row" ng-if="que.length%2 != 0">
+                        <ion-radio ng-value="item" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == 0">{{item}}. {{que.left}}</ion-radio>
+                        <ion-radio ng-value="item" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == (que.length-1)/2"> {{item}}. {{que.mid}}</ion-radio>
+                        <ion-radio ng-value="item" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == que.length-1">{{item}}. {{que.right}}</ion-radio>
+                        <ion-radio ng-value="item" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert!= 0 && $likert != que.length-1 && $likert != (que.length-1)/2">{{item}}.</ion-radio>
+                      </div>
+                    </ion-list>
                   </div>
                   <div ng-switch-default>
                     <label class="item item-input">
