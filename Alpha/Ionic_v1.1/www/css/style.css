@@ -108,3 +108,9 @@ label.item.valid-lr {
   border-color:#0c63ee;
   margin-left:10%;
 }
+
+/*Terms of Use items*/
+.tou{
+  margin-top: 20px;
+  text-align: justify;
+}
