@@ -15,25 +15,23 @@
           </div>
           <!-- kalo di pencet dia munculin checkbox di sebelah kiri buat delete + ganti tulisan di bawah jadi delete terus button trash ini jadi "cancel"-->
           <div class="col-offset-50">
-            <a class="button button-icon icon ion-trash-a" ng-click="deletePolling.showOngoingDelete = !deletePolling.showOngoingDelete;"></a>
+            <a class="button button-icon icon ion-trash-a" ng-click="deletePolling.showOngoingDelete = !deletePolling.showOngoingDelete; deletePolling.showDraftDelete = false"></a>
           </div>
         </div>
       </div>
       <ion-list show-delete = "deletePolling.showOngoingDelete">
-
           <div ng-repeat="(key,polling) in pollingsaf"  ng-click="viewSummary(key)">
             <div ng-if="uuid==polling.userid">
               <div ng-if="polling.title.toLowerCase().includes(temp.searchText.toLowerCase())">
                 <div ng-if="date1<=getPollDate(polling.deadline)">
                   <ion-item>
                     <h2>{{polling.title}}</h2>
-                    <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(key)"></ion-delete-button>
+                    <ion-delete-button class="ion-minus-circled" ng-click="onOngoingDelete(key)"></ion-delete-button>
                   </ion-item>
                 </div>
               </div>
             </div>
           </div>
-
       </ion-list>
 
 
@@ -73,19 +71,23 @@
           </div>
           <!-- kalo di pencet dia munculin checkbox di sebelah kiri buat delete + ganti tulisan di bawah jadi delete terus button trash ini jadi "cancel"-->
           <div class="col-offset-50">
-            <a class="button button-icon icon ion-trash-a"></a>
+            <a class="button button-icon icon ion-trash-a" ng-click = "deletePolling.showDraftDelete = !deletePolling.showDraftDelete; deletePolling.showOngoingDelete = false"></a>
           </div>
         </div>
       </div>
-      <div ng-repeat="(key,polling) in temppollingsaf">
-        <div ng-if="uuid==polling.userid">
+      <ion-list show-delete="deletePolling.showDraftDelete">
+        <div ng-repeat="(key,polling) in temppollingsaf">
+          <div ng-if="uuid==polling.userid">
             <div ng-if="polling.title.toLowerCase().includes(temp.searchText.toLowerCase())">
-              <a class="item" ng-click="editPolling(key)">
+              <ion-item ng-click="editPolling(key)">
                 <h2>{{polling.title}}</h2>
-              </a>
+                <ion-delete-button class="ion-minus-circled" ng-click="onDraftDelete(key)"></ion-delete-button>
+              </ion-item>
             </div>
+          </div>
         </div>
-      </div>
+      </ion-list>
+
 
       <!-- delete polling note(buat controller): muncul kalo ada pollingnya aja. -->
      <!--<div class="item item-divider">

@@ -32,11 +32,17 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   };
 
   $scope.deletePolling = {
-    showOngoingDelete: false
+    showOngoingDelete: false,
+    showDraftDelete: false
   };
 
-  $scope.onItemDelete = function(key){
+  $scope.onOngoingDelete = function(key){
     var temppolling = $firebaseObject(ref.child('pollings').child(key));
+    temppolling.$remove();
+  };
+
+  $scope.onDraftDelete = function(key){
+    var temppolling = $firebaseObject(ref.child('temppollings').child(key));
     temppolling.$remove();
   };
   $scope.showPopup = function(){
