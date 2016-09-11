@@ -85,6 +85,7 @@ label.item.valid-lr {
 .build-polling{
   margin-top:60px;
 }
+
 .makeRange{
   border:3px solid #0c63ee;
   -webkit-border-radius:50%;
@@ -92,15 +93,11 @@ label.item.valid-lr {
   border-radius:50%;
   padding:5px 10px;
 }
-.rowRange{
-  margin-bottom:10px;
-}
-
 .vLine{
   border:2px solid #000;
   height:100%;
-  width:0px;
-  padding-bottom:10px;
+  width:0;
+  padding-bottom:5%;
   margin-left:8%;
 }
 

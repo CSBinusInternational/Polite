@@ -39,16 +39,8 @@
                   </div>
                   <div ng-switch-when="range">
                     <ion-list ng-repeat="item in que.steps" ng-init ="$likert = $index">
-                      <div class="row rowRange" ng-if="que.length%2 == 0">
-                        <ion-radio ng-value="$likert+1" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == 0"><span class="makeRange">{{$likert+1}}</span> {{que.left}}</ion-radio>
-                        <ion-radio ng-value="$likert+1" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == que.length-1"><span class="makeRange">{{$likert+1}}</span> {{que.right}}</ion-radio>
-                        <ion-radio ng-value="$likert+1" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert!= 0 && $likert != que.length-1"><span class="makeRange">{{$likert+1}}</span></ion-radio>
-                      </div>
-                      <div class="row rowRange" ng-if="que.length%2 != 0">
-                        <ion-radio ng-value="$likert+1" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == 0"><span class="makeRange">{{$likert+1}}</span> {{que.left}}</ion-radio>
-                        <ion-radio ng-value="$likert+1" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == (que.length-1)/2"> <span class="makeRange">{{$likert+1}}</span> {{que.mid}}</ion-radio>
-                        <ion-radio ng-value="$likert+1" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert == que.length-1"><span class="makeRange">{{$likert+1}}</span> {{que.right}}</ion-radio>
-                        <ion-radio ng-value="$likert+1" ng-model="myanswerset[$outer]" name={{$outer}} ng-if="$likert!= 0 && $likert != que.length-1 && $likert != (que.length-1)/2"><span class="makeRange">{{$likert+1}}</span></ion-radio>
+                      <div class="row">
+                        <ion-radio ng-value="$likert" ng-model="myanswerset[$outer]" name={{$outer}}><span class="makeRange">{{$likert+1}}</span> {{item}}</ion-radio>
                       </div>
                       <div class="row" ng-if="$likert != que.length-1">
                         <div class="vLine blueLine"></div>

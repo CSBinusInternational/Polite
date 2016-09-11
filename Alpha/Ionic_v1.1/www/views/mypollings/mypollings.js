@@ -199,9 +199,9 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     $scope.modal.show();
   };
 
-  $scope.addSteps = function(arrayindex,index){
+  $scope.addSteps = function(arrayindex){
     var currentarr = $firebaseArray($scope.questionref.child(arrayindex).child('steps'));
-    currentarr.$add(index);
+    currentarr.$add("");
     $scope.thistemppollingque.$save();
     $scope.modal.show();
   };
@@ -220,9 +220,6 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
       question:"",
       type:'range',
       steps:[],
-      left:"",
-      mid:"",
-      right:"",
       length:$scope.maxSteps,
       mandatory:false
     };
@@ -230,32 +227,12 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
       var theKey = p.key();
       var setStep = 4;
       for(var i = 1 ; i <= setStep; i++){
-        $scope.addSteps(theKey,i);
+        $scope.addSteps(theKey);
       }
     });
     $scope.thistemppollingque.$save();
     $scope.modal.show();
   };
-
-  /*dynamic wording (start)*/
-  $scope.changeLeft = function(outerkey,word){
-    var tempobj= new $firebaseObject($scope.questionref.child(outerkey).child('left'));
-    tempobj.$value = word;
-    tempobj.$save();
-  };
-
-  $scope.changeMid = function(outerkey,word){
-    var tempobj= new $firebaseObject($scope.questionref.child(outerkey).child('mid'));
-    tempobj.$value = word;
-    tempobj.$save();
-  };
-
-  $scope.changeRight = function(outerkey,word){
-    var tempobj= new $firebaseObject($scope.questionref.child(outerkey).child('right'));
-    tempobj.$value = word;
-    tempobj.$save();
-  };
-    /*dynamic wording (end)*/
 
   $scope.detSteps = function(arrayindex,p){
     var currRange = $firebaseArray($scope.questionref.child(arrayindex).child('steps'));
@@ -263,7 +240,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
       //adding array size
       if(rangeIndex.length<p){
         for(var i = rangeIndex.length+1; i <= p;i++) {
-          $scope.addSteps(arrayindex,i);
+          $scope.addSteps(arrayindex);
         }
       }
       //substract array size
@@ -272,15 +249,16 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
           $scope.deleteSteps(arrayindex,i-1);
         }
       }
-      if(p%2 == 0){
-        var midWord = new $firebaseObject($scope.questionref.child(arrayindex).child('mid'));
-        midWord.$value = "";
-        midWord.$save();
-      }
       var updateStep = new $firebaseObject($scope.questionref.child(arrayindex).child('length'));
       updateStep.$value = p;
       updateStep.$save();
     });
+  };
+
+  $scope.changeLikertCho = function(outerkey,innerkey,cho){
+    var tempobj = new $firebaseObject($scope.questionref.child(outerkey).child('steps').child(innerkey));
+    tempobj.$value = cho;
+    tempobj.$save();
   };
 
   $scope.editPolling = function(associatedkey) {

@@ -153,33 +153,16 @@
                 <i class="icon ion-happy"></i>
               </div>-->
               <div ng-repeat="(innerKeyLikert,item) in cr.steps track by $index" ng-init="$likert = $index">
-                <div class="row rowRange" ng-if="cr.length%2 == 0">
-                  <div class="col" ng-if="$likert == 0">
-                   <span class="makeRange">{{$likert+1}}</span> {{cr.left}}
-                  </div>
-                  <div class="col" ng-if="$likert == cr.length-1">
-                    <span class="makeRange">{{$likert+1}}</span> {{cr.right}}
-                  </div>
-                  <div class="col" ng-if="$likert!= 0 && $likert != cr.length-1">
-                    <span class="makeRange">{{$likert+1}}</span>
-                  </div>
-                </div>
-                <div class="row rowRange" ng-if="cr.length%2 != 0">
-                  <div class="col" ng-if="$likert == 0">
-                    <span class="makeRange">{{$likert+1}}</span> {{cr.left}}
-                  </div>
-                  <div class="col" ng-if="$likert == (cr.length-1)/2">
-                    <span class="makeRange">{{$likert+1}}</span> {{cr.mid}}
-                  </div>
-                  <div class="col" ng-if="$likert == cr.length-1">
-                    <span class="makeRange">{{$likert+1}}</span> {{cr.right}}
-                  </div>
-                  <div class="col" ng-if="$likert!= 0 && $likert != cr.length-1 && $likert != (cr.length-1)/2">
-                    <span class="makeRange">{{$likert+1}}</span>
-                  </div>
+                <div class="row">
+                    <div class="col col-20">
+                      <span class="makeRange">{{$likert+1}}</span>
+                    </div>
+                    <div class="col">
+                      <input type="text" ng-model="item" ng-change="changeLikertCho(okey, innerKeyLikert,item)" placeholder="Option Here">
+                    </div>
                 </div>
                 <div class="row" ng-if="$likert != cr.length-1">
-                  <div class="vLine")></div>
+                  <div class="vLine"></div>
                 </div>
               </div>
               <!-- gw gatau ini bagus ato engga, kalo ada ide lebih bagus kasi tau aja-->
@@ -199,26 +182,6 @@
                       <option>8</option>
                     </select>
                   </label>
-                  <div ng-if="cr.length%2 == 0">
-                    <label class="item item-input">
-                      <input type="text" ng-model="cr.left" ng-change="changeLeft(okey,cr.left)" placeholder="Top Tag">
-                    </label>
-                    <label class="item item-input">
-                      <input type="text" ng-model="cr.right" ng-change="changeRight(okey,cr.right)" placeholder="Bottom Tag">
-                    </label>
-                  </div>
-                  <div ng-if="cr.length%2 == 1">
-                    <label class="item item-input">
-                      <input type="text" ng-model="cr.left" ng-change="changeLeft(okey,cr.left)" placeholder="Top Tag">
-                    </label>
-                    <label class="item item-input">
-                      <input type="text" ng-model="cr.mid" ng-change="changeMid(okey,cr.mid)" placeholder="Middle Tag">
-                    </label>
-                    <label class="item item-input">
-                      <input type="text" ng-model="cr.right" ng-change="changeRight(okey,cr.right)" placeholder="Bottom Tag">
-                    </label>
-                  </div>
-
                 </ion-list>
               </div>
               <!-- gw gatau ini bagus ato engga, kalo ada ide lebih bagus kasi tau aja (end)-->
