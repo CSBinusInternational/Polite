@@ -15,21 +15,27 @@
           </div>
           <!-- kalo di pencet dia munculin checkbox di sebelah kiri buat delete + ganti tulisan di bawah jadi delete terus button trash ini jadi "cancel"-->
           <div class="col-offset-50">
-            <a class="button button-icon icon ion-trash-a"></a>
+            <a class="button button-icon icon ion-trash-a" ng-click="deletePolling.showOngoingDelete = !deletePolling.showOngoingDelete;"></a>
           </div>
         </div>
       </div>
-      <div ng-repeat="(key,polling) in pollingsaf"  ng-click="viewSummary(key)">
-        <div ng-if="uuid==polling.userid">
-            <div ng-if="polling.title.toLowerCase().includes(temp.searchText.toLowerCase())">
+      <ion-list show-delete = "deletePolling.showOngoingDelete">
+
+          <div ng-repeat="(key,polling) in pollingsaf"  ng-click="viewSummary(key)">
+            <div ng-if="uuid==polling.userid">
+              <div ng-if="polling.title.toLowerCase().includes(temp.searchText.toLowerCase())">
                 <div ng-if="date1<=getPollDate(polling.deadline)">
-                  <a class="item">
+                  <ion-item>
                     <h2>{{polling.title}}</h2>
-                  </a>
+                    <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(key)"></ion-delete-button>
+                  </ion-item>
                 </div>
+              </div>
             </div>
-        </div>
-      </div>
+          </div>
+
+      </ion-list>
+
 
       <div class="item item-divider">
         <div class="row">

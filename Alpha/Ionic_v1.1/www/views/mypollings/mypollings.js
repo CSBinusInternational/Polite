@@ -30,6 +30,15 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     mypollkey.currentValue=key;
     $state.go('app.mypollingsummary');
   };
+
+  $scope.deletePolling = {
+    showOngoingDelete: false
+  };
+
+  $scope.onItemDelete = function(key){
+    var temppolling = $firebaseObject(ref.child('pollings').child(key));
+    temppolling.$remove();
+  };
   $scope.showPopup = function(){
 
     $scope.dataa = {
