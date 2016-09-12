@@ -38,7 +38,14 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
               angular.forEach(value.type.choices, function(cvalue,ckey) {
                 $scope.tempcheckbox.push(false);
               });
-              $scope.myanswerset.push($scope.tempradio);
+              $scope.myanswerset.push($scope.tempcheckbox);
+            }
+            if (value.type=="range") {
+              $scope.temprange = [];
+              angular.forEach(value.type.steps, function(cvalue,ckey) {
+                $scope.temprange.push(false);
+              });
+              $scope.myanswerset.push($scope.temprange);
             }
             if (value.type=="text") {
               $scope.myanswerset.push("");
@@ -72,7 +79,7 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
     console.log($scope.submissionData);
     var isPopup = false;
     angular.forEach($scope.myanswerset, function(value,key) {
-        if (value==null || value=="") {
+        if (value===null || value=="") {
             isPopup = true;
         }
     });

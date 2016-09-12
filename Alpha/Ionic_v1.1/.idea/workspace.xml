@@ -41,16 +41,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="polling.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/views/home/polling.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-27.461538">
-              <caret line="42" column="146" selection-start-line="42" selection-start-column="146" selection-end-line="42" selection-end-column="146" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/views/home/home.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -71,21 +61,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mypollings.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mypollings.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/views/mypollings/mypollings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.72589535">
+            <state vertical-scroll-proportion="0.0">
               <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="polling.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/views/home/polling.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-30.73077">
+              <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/views/home/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.5271523">
+              <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -118,12 +118,12 @@
         <option value="$PROJECT_DIR$/www/views/about/about.html" />
         <option value="$PROJECT_DIR$/www/views/about/term.html" />
         <option value="$PROJECT_DIR$/www/views/about/about.js" />
-        <option value="$PROJECT_DIR$/www/views/home/home.js" />
         <option value="$PROJECT_DIR$/www/views/createpolling/createpolling.html" />
         <option value="$PROJECT_DIR$/www/css/style.css" />
         <option value="$PROJECT_DIR$/www/views/home/polling.html" />
         <option value="$PROJECT_DIR$/www/views/mypollings/mypollings.html" />
         <option value="$PROJECT_DIR$/www/views/mypollings/mypollings.js" />
+        <option value="$PROJECT_DIR$/www/views/home/home.js" />
       </list>
     </option>
   </component>
@@ -814,18 +814,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/views/home/home.html">
+    <entry file="file://$PROJECT_DIR$/www/views/createpolling/createpolling.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2692308">
-          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/views/home/polling.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-27.461538">
-          <caret line="42" column="146" selection-start-line="42" selection-start-column="146" selection-end-line="42" selection-end-column="146" />
+        <state vertical-scroll-proportion="-12.346154">
+          <caret line="163" column="20" selection-start-line="163" selection-start-column="17" selection-end-line="163" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -838,22 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/views/createpolling/createpolling.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.346154">
-          <caret line="163" column="20" selection-start-line="163" selection-start-column="17" selection-end-line="163" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/views/home/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/views/mypollings/mypollings.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.153846">
@@ -862,10 +838,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/views/home/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2692308">
+          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/views/mypollings/mypollings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72589535">
+        <state vertical-scroll-proportion="0.0">
           <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/views/home/polling.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-30.73077">
+          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/views/home/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5271523">
+          <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
           <folding />
         </state>
       </provider>
