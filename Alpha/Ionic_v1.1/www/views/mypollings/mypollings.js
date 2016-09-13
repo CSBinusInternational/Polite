@@ -140,13 +140,27 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
           + 'T' + pad(now.getHours())
           + ':' + pad(now.getMinutes())
           + ':' + pad(now.getSeconds());
-      $scope.currdate =  new Date(now.getFullYear(),pad(now.getMonth()+1),pad(now.getDate()),pad(now.getHours()),pad(now.getMinutes()),pad(now.getSeconds()),0);
+      //$scope.currdate =  new Date(now.getFullYear(),pad(now.getMonth()+1),pad(now.getDate()),pad(now.getHours()),pad(now.getMinutes()),pad(now.getSeconds()),0);
+      $scope.currdate = new Date();
+      //$scope.minDate = new Date(2105, 6, 1);
+      //$scope.maxDate = new Date(2015, 6, 31);
+      console.log("Initialized Date in Date format : "+$scope.currdate);
+      console.log("Initialized Date in Integer format : "+$scope.currdate.getTime());
       var deadlineObj = new $firebaseObject($scope.polingref.child('deadline'));
       deadlineObj.$value = $scope.currdate.getTime();
       deadlineObj.$save();
       $scope.distributeModal.show();
       $scope.modal.hide();
       $scope.analyzeModal.hide();
+    };
+
+    $scope.datePickerCallback = function (val) {
+        if (!val) {
+            console.log('Date not selected');
+        } else {
+            $scope.currdate = val;
+            console.log('Selected date is : ', val);
+        }
     };
 
     $ionicModal.fromTemplateUrl('views/analyzepolling/analyzepolling.html',{
@@ -362,8 +376,12 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
       console.log("Temp Polling Object : " + temppollingObj);
       var deadlineObj = new $firebaseObject($scope.polingref.child('deadline'));
       deadlineObj.$loaded().then(function(){
+        console.log("Current date in Date format : " + $scope.currdate);
         var val = $scope.currdate.getTime();
+        console.log("Current date in Integer format : " + $scope.currdate.getTime());
+        console.log("Accessing the variable : " + val);
         deadlineObj.$value = val;
+        console.log("Value of deadline :"+ deadlineObj.$value);
         deadlineObj.$save();
         var pollingsparentArr = $firebaseArray(ref.child('pollings'));
         pollingsparentArr.$loaded().then(function(){

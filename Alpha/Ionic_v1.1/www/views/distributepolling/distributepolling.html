@@ -41,10 +41,13 @@
         <div class="row">
           <div class="col">
             <!--Deadline Date-->
-            <label class="item item-input">
+            <!-- <label class="item item-input">
               <i class="icon ion-calendar"></i>
               <input type="datetime-local" ng-model="currdate">
-            </label>
+            </label> -->
+            <ionic-datepicker date="currdate" callback="datePickerCallback">
+                <button class="button button-block button-positive"> {{ currdate | date:'MMMM/dd/yyyy' }} </button>
+            </ionic-datepicker>
           </div>
         </div>
         <div class="row">

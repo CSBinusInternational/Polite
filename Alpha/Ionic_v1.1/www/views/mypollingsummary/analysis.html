@@ -13,10 +13,10 @@
          </div>
          <div class = "col-10"></div>
     </div>
-    <div class = "row" ng-repeat="eachquestion in currentPolling.questions" ng-init="$layer1 = $index">
+    <div class = "row" ng-repeat="eachquestion in currentPolling.questions track by $outer">
          <div class = "col-10"></div>
          <div class = "col-80">
-             <h4>{{$layer1+1}}. {{eachquestion.question}}</h4>
+             <h4>{{$outer+1}}. {{eachquestion.question}}</h4>
              <div ng-switch on="eachquestion.type">
                  <div ng-switch-when="radio">
 
@@ -28,14 +28,12 @@
 
                  </div>
                  <div ng-switch-default>
-                   <!--
                    <ion-scroll direction="y" style=" height: 200px">
                      <div class="list card">
-                        <div class="item" ng-repeat="name in answerArray[$layer1] track by $layer2">
-                            {{answerArray[$layer1]}}
+                        <div class="item" ng-repeat="name in answerArray[$outer] track by $inner">
+                            {{answerArray}}
                         </div>
                     </div>
-                  -->
                  </div>
              </div>
          </div>
