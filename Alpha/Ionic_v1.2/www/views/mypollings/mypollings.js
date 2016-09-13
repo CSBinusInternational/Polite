@@ -152,7 +152,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     };
 
   $scope.changeDate= function(date){
-    console.log("Currdate: "+$scope.currdate);
+    console.log("Currdate:  "+$scope.currdate);
     console.log("Date form: "+date);
     var pad = function(num) {
       var norm = Math.abs(Math.floor(num));
