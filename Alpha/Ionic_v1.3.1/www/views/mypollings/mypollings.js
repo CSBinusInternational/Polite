@@ -46,13 +46,37 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   };
 
   $scope.onOngoingDelete = function(key){
-    var temppolling = $firebaseObject(ref.child('pollings').child(key));
-    temppolling.$remove();
+    var confirmPopup = $ionicPopup.confirm({
+         title: 'Delete Polling',
+         template: 'Are you sure you want to delete this Polling?'
+      });
+
+      confirmPopup.then(function(res) {
+         if(res) {
+           var temppolling = $firebaseObject(ref.child('pollings').child(key));
+           temppolling.$remove();
+         } else {
+            console.log('Delete got Cancelled!');
+         }
+      });
+
   };
 
   $scope.onDraftDelete = function(key){
-    var temppolling = $firebaseObject(ref.child('temppollings').child(key));
-    temppolling.$remove();
+    var confirmPopup = $ionicPopup.confirm({
+         title: 'Delete Polling',
+         template: 'Are you sure you want to delete this Polling?'
+      });
+
+      confirmPopup.then(function(res) {
+         if(res) {
+           var temppolling = $firebaseObject(ref.child('temppollings').child(key));
+           temppolling.$remove();
+         } else {
+            console.log('Delete got Cancelled!');
+         }
+      });
+
   };
   $scope.showPopup = function(){
     $scope.dataa = {
