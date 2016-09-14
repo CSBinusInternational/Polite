@@ -21,18 +21,32 @@
                  <div ng-switch-when="radio">
                    <div class="card">
                        <div class="item item-divider">
-                           A bar chart
+                           Pie chart
                        </div>
                        <div class="item item-text-wrap">
-                           <canvas id="bar" class="chart chart-bar" data="dataaa" labels="labels" legend="true" series="series" options="{showTooltips: false}"></canvas>
+                         <canvas id="pie" class="chart chart-pie" chart-data="dataPie" chart-labels="labels" chart-legend="false" chart-options="{showTooltips: true}"></canvas>
                        </div>
                    </div>
                  </div>
                  <div ng-switch-when="checkbox">
-
+                   <div class="card">
+                       <div class="item item-divider">
+                           Bar chart
+                       </div>
+                       <div class="item item-text-wrap">
+                           <canvas id="bar" class="chart chart-bar" chart-data="dataaa" chart-labels="labels" chart-legend="true" chart-series="series" chart-options="{showTooltips: false}"></canvas>
+                       </div>
+                   </div>
                  </div>
                  <div ng-switch-when="range">
-
+                   <div class="card">
+                       <div class="item item-divider">
+                           Bar chart
+                       </div>
+                       <div class="item item-text-wrap">
+                           <canvas id="bar" class="chart chart-bar" chart-data="dataaa" chart-labels="labels" chart-legend="true" chart-series="series" chart-options="{showTooltips: false}"></canvas>
+                       </div>
+                   </div>
                  </div>
                  <div ng-switch-default>
                    <ion-scroll direction="y" style=" height: 200px">
