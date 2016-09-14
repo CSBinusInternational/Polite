@@ -114,9 +114,8 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
     var day = deadlinedate.substr(6,2);
     var hour = deadlinedate.substr(8,2);
     var minute = deadlinedate.substr(10,2);
-      var temp = new Date(year,month,day,hour,minute,0);
-    console.log(temp);
-      return temp;
+    var temp = new Date(year,month,day,hour,minute,0);
+    return temp;
   };
 
 
