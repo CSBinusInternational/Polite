@@ -108,7 +108,14 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
   };
 
   $scope.getDeadline = function(deadlinedate) {
-      var temp = new Date(deadlinedate);
+    deadlinedate = deadlinedate.toString();
+    var year = deadlinedate.substr(0,4);
+    var month = deadlinedate.substr(4,2);
+    var day = deadlinedate.substr(6,2);
+    var hour = deadlinedate.substr(8,2);
+    var minute = deadlinedate.substr(10,2);
+      var temp = new Date(year,month,day,hour,minute,0);
+    console.log(temp);
       return temp;
   };
 
