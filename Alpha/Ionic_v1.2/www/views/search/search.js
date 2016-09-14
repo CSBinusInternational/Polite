@@ -1,9 +1,10 @@
 'Use Strict';
 angular.module('App').controller('searchController', function ($scope, $ionicModal, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, $firebaseArray, Auth, FURL, Utils) {
+  console.log("Home Controller!");
   var ref = new Firebase(FURL);
   var authData = ref.getAuth();
   $scope.uuid = authData.uid;
-  $scope.temp = {searchText: ""};
+  $scope.temp = {searchText:""};
   $scope.timestamp = new Date().getTime();
   $scope.pollingsaf = $firebaseObject(ref.child('pollings'));
 
@@ -37,8 +38,14 @@ angular.module('App').controller('searchController', function ($scope, $ionicMod
               angular.forEach(value.type.choices, function(cvalue,ckey) {
                 $scope.tempcheckbox.push(false);
               });
-              $scope.myanswerset.push($scope.tempradio);
-
+              $scope.myanswerset.push($scope.tempcheckbox);
+            }
+            if (value.type=="range") {
+              $scope.temprange = [];
+              angular.forEach(value.type.steps, function(cvalue,ckey) {
+                $scope.temprange.push(false);
+              });
+              $scope.myanswerset.push($scope.temprange);
             }
             if (value.type=="text") {
               $scope.myanswerset.push("");
@@ -72,7 +79,7 @@ angular.module('App').controller('searchController', function ($scope, $ionicMod
     console.log($scope.submissionData);
     var isPopup = false;
     angular.forEach($scope.myanswerset, function(value,key) {
-        if (value==null || value=="") {
+        if (value===null || value=="") {
             isPopup = true;
         }
     });
