@@ -51,7 +51,7 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
             $scope.answerArray[i][j] = "";
         }
     }
-    console.log("Initialize Answer Array : " + $scope.answerArray[1][0]);
+    //console.log("Initialize Answer Array : " + $scope.answerArray[1][0]);
     $scope.answersObj = $firebaseObject(ref.child('pollings').child(indexString).child('answers'));
     $scope.answersObj.$loaded().then(function(){
       var ctr = 0;
@@ -67,7 +67,7 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
           });
           ctr+=1;
       });
-      console.log("Answer Array : " + $scope.answerArray[1][0]);
+      //console.log("Answer Array : " + $scope.answerArray[1][0]);
     });
   });
 

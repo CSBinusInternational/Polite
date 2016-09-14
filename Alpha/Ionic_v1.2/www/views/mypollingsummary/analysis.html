@@ -28,14 +28,12 @@
 
                  </div>
                  <div ng-switch-default>
-                   <!--
                    <ion-scroll direction="y" style=" height: 200px">
                      <div class="list card">
-                        <div class="item" ng-repeat="name in answerArray[$layer1] track by $layer2">
-                            {{answerArray[$layer1]}}
+                        <div class="item" ng-repeat="name in answerArray[$layer1] track by $index">
+                            {{answerArray[$layer1][$index]}}
                         </div>
                     </div>
-                  -->
                  </div>
              </div>
          </div>
