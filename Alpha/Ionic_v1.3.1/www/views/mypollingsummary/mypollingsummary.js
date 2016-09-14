@@ -52,19 +52,18 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
     $scope.totalChoices = totalchoices;
     $scope.totalResponse = totalres;
     $scope.totalQuestion = totalque;
+    console.log("total choices : "+ $scope.totalChoices);
     console.log("Total response : " + $scope.totalResponse);
     console.log("Total question : "+ $scope.totalQuestion);
     var i=0;
     var j=0;
     for (i=0;i<$scope.totalQuestion;i++) {
         $scope.answerArray[i] = new Array();
-        for (j=0;j<$scope.totalResponse;j++) {
-            $scope.answerArray[i][j] = 0;
-        }
       $scope.questionArray[i] = new Array();
-      for(j = 0; j < totalchoices[i];j++){
-        $scope.questionArray[i][j] = "";
-      }
+        for (j=0;j<$scope.totalChoices[i];j++) {
+          $scope.answerArray[i][j] = 0;
+          $scope.questionArray[i][j] = "";
+        }
     }
     //console.log("Initialize Answer Array : " + $scope.answerArray[1][0]);
     $scope.answersObj = $firebaseObject(ref.child('pollings').child(indexString).child('answers'));
@@ -72,14 +71,13 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
       var ctr = 0;
       angular.forEach($scope.answersObj, function(value,key) {
           var innerctr = 0;
-          console.log("Current value : " + value);
-          console.log("Current key : " + key);
           angular.forEach(value.answerset, function(innervalue,innerkey) {
-              console.log("Current inner value : " + innervalue);
-              $scope.answerArray[innerctr][innervalue] +=1;
-              // [questions][response_number] -> each question type is a row
-              innerctr+=1;
+            $scope.answerArray[innerctr][innervalue-1] +=1;
+            console.log("Array answer "+innerctr+"choice number "+Number(innervalue-1)+" : "+ $scope.answerArray[innerctr][innervalue-1]);
+            // [questions][response_number] -> each question type is a row
+            innerctr+=1;
           });
+        console.log("---");
           ctr+=1;
       });
       $scope.series = ['Series A', 'Series B'];
@@ -102,11 +100,8 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
     $scope.questionsObj.$loaded().then(function(){
       var ctr = 0;
       angular.forEach($scope.questionsObj, function(value,key){
-      console.log("Current question value : "+ value);
-      console.log("Current Key :" + key);
         var innerctr= 0;
       angular.forEach(value.choices, function(innervalue, innerkey) {
-        console.log("Current inner value: "+ innervalue);
         $scope.questionArray[ctr][innerctr] = innervalue;
         innerctr+=1;
       });
