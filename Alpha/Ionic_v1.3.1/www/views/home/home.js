@@ -78,8 +78,10 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
     };
     console.log($scope.submissionData);
     var isPopup = false;
-    angular.forEach($scope.myanswerset, function(value,key) {
-        if (value===null || value=="") {
+    angular.forEach($scope.myanswerset, function(submitValue,submitKey) {
+        console.log("Key of each answer set : "+submitKey)
+        console.log("Value of each answer set : " + submitValue);
+        if (submitValue==''||submitValue===null) {
             isPopup = true;
         }
     });

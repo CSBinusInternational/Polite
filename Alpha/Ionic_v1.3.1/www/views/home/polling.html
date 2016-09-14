@@ -16,7 +16,7 @@
      <div class = "row">
         <div class = "col-10"></div>
         <div class = "col-80">
-            <p>{{selectedpolling.desqueiption}}</p>
+            <p>{{selectedpolling.description}}</p>
         </div>
         <div class = "col-10"></div>
     </div>
@@ -28,7 +28,7 @@
               <div ng-switch on="que.type">
                   <div ng-switch-when="radio">
                     <ion-list>
-                      <ion-radio ng-repeat="cho in que.choices" ng-init="$inner = $index" ng-value="$inner" ng-model="myanswerset[$outer]" name={{$outer}}>{{cho}}</ion-radio>
+                      <ion-radio ng-repeat="cho in que.choices" ng-init="$inner = $index+1" ng-value="$inner" ng-model="myanswerset[$outer]" name={{$outer+1}}>{{cho}}</ion-radio>
                       <!--ion-radio ng-repeat="cho in que.choices track by $index" name="asd+$index" ng-model="myanswerset[$parent.$index]" ng-value="myanswerset[$parent.$index]">{{cho}}</ion-radio-->
                     </ion-list>
                   </div>
