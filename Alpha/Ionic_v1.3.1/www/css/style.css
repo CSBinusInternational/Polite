@@ -1,0 +1,113 @@
+/* Empty. Add your own CSS if you like */
+
+.larger {
+    font-size: 120px;
+}
+
+
+/** Error Messages **/
+
+/** Styling for the username field **/
+label.item.has-error {
+  border-bottom: 2px solid red;
+}
+
+/** Styling for the password field when an error exists**/
+label.item.has-error-lr {
+  border-bottom: 2px solid red;
+}
+
+/** Styling for the password field when an error has been resolved**/
+label.item.valid-lr {
+  border-left: 2px solid green;
+  border-right: 2px solid green;
+}
+
+/** Styling for the error text and container **/
+.form-errors {
+  margin: 5px 0
+}
+.form-error {
+  padding: 2px 0 2px 16px;
+  color: red;
+}
+
+.item-profile > img:first-child{
+
+  height:150px;
+  width:150px;
+  border-radius:50%;
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.changepassword{
+  margin-top:90px;
+}
+
+.tabs-vertical .tab-nav.tabs {
+  position: absolute !important;
+  top: 90px !important;
+  height: 100% !important;
+  width: 60px !important;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: center;
+
+  border-left-color: #0c63ee;
+  border-top: none;
+}
+
+.tab-nav> a.tab-item{
+  display:block !important;
+  height: auto !important;
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+  margin: 20px 0;
+
+}
+
+.has-tabs{
+  bottom: 0 !important;
+  left:60px !important;
+}
+
+.vertical-item{
+  margin-top:60px;
+  margin-left:60px;
+}
+/*buat build polling only*/
+.build-polling{
+  margin-top:60px;
+}
+
+.makeRange{
+  border:3px solid #0c63ee;
+  -webkit-border-radius:50%;
+  -moz-border-radius:50%;
+  border-radius:50%;
+  padding:5px 10px;
+}
+.vLine{
+  border:2px solid #000;
+  height:100%;
+  width:0;
+  padding-bottom:5%;
+  margin-left:8%;
+}
+
+.blueLine{
+  border-color:#0c63ee;
+  margin-left:10%;
+}
+
+/*Terms of Use items*/
+.tou{
+  margin-top: 20px;
+  text-align: justify;
+}

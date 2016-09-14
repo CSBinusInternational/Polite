@@ -1,0 +1,60 @@
+<ion-view view-title="Summary" hide-back-button="false">
+  <ion-content class="padding-top">
+    <div class = "row">
+         <div class = "col-10"></div>
+         <div class = "col-80">
+             <h4>{{currentPolling.title}}</h4>
+         </div>
+         <div class = "col-10"></div>
+     </div>
+     <div class = "row">
+        <div class = "col-10"></div>
+        <div class = "col-80">
+            <p>{{currentPolling.description}}</p>
+        </div>
+        <div class = "col-10"></div>
+    </div>
+    <div class="list">
+      <div class="item item-divider">
+        Results
+      </div>
+      <div class="item">
+        Number of Responses
+        <span class="item-note">
+            {{getTotalResponses()}}
+        </span>
+      </div>
+      <a class="item item-icon-right" ng-click="openAnalysis()">
+        Analysis
+        <i class="icon ion-ios-arrow-right"></i>
+      </a>
+      <div class="item item-divider">
+        Details Info
+      </div>
+      <div class="item">
+        Author
+        <span class="item-note">
+          {{currentPolling.ownerName}}
+        </span>
+      </div>
+      <div class="item">
+        Visibility
+        <span class="item-note">
+          {{currentPolling.visibility}}
+        </span>
+      </div>
+      <div class="item">
+        Deadline
+        <span class="item-note">
+            {{getDeadline(currentPolling.deadline) | date: "yyyy-MM-dd at HH:mm:ss"}}
+        </span>
+      </div>
+      <div class="item">
+        Number of Questions
+        <span class="item-note">
+            {{getTotalQuestions()}}
+        </span>
+      </div>
+  </div>
+  </ion-content>
+</ion-view>
