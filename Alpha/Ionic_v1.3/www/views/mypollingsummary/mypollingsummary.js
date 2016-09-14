@@ -55,6 +55,11 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
     $scope.answersObj = $firebaseObject(ref.child('pollings').child(indexString).child('answers'));
     $scope.answersObj.$loaded().then(function(){
       var ctr = 0;
+
+      $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+      $scope.info = [300, 500, 100];
+
+
       angular.forEach($scope.answersObj, function(value,key) {
           var innerctr = 0;
           console.log("Current value : " + value);

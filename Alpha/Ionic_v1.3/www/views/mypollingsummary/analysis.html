@@ -19,7 +19,9 @@
              <h4>{{$layer1+1}}. {{eachquestion.question}}</h4>
              <div ng-switch on="eachquestion.type">
                  <div ng-switch-when="radio">
-
+                   <canvas id="pie" class="chart chart-pie"
+                    chart-data="info" chart-labels="labels" chart-options="options">
+                    </canvas>
                  </div>
                  <div ng-switch-when="checkbox">
 
