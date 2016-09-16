@@ -253,14 +253,14 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   };
 
   $scope.addSteps = function(arrayindex){
-    var currentarr = $firebaseArray($scope.questionref.child(arrayindex).child('steps'));
+    var currentarr = $firebaseArray($scope.questionref.child(arrayindex).child('choices'));
     currentarr.$add("");
     $scope.thistemppollingque.$save();
     $scope.modal.show();
   };
 
     $scope.deleteSteps = function (arrayindex,index) {
-      var currentarr = new $firebaseArray($scope.questionref.child(arrayindex).child('steps'));
+      var currentarr = new $firebaseArray($scope.questionref.child(arrayindex).child('choices'));
       currentarr.$loaded().then(function(data) {
         var item = currentarr[index];
         currentarr.$remove(item);
@@ -272,7 +272,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
     var likert_throwable = {
       question:"",
       type:'range',
-      steps:[],
+      choices:[],
       length:$scope.maxSteps,
       mandatory:false
     };
@@ -288,7 +288,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   };
 
   $scope.detSteps = function(arrayindex,p){
-    var currRange = $firebaseArray($scope.questionref.child(arrayindex).child('steps'));
+    var currRange = $firebaseArray($scope.questionref.child(arrayindex).child('choices'));
     currRange.$loaded().then(function(rangeIndex){
       //adding array size
       if(rangeIndex.length<p){
@@ -309,7 +309,7 @@ angular.module('App').controller('myPollingsController', function ($scope, $ioni
   };
 
   $scope.changeLikertCho = function(outerkey,innerkey,cho){
-    var tempobj = new $firebaseObject($scope.questionref.child(outerkey).child('steps').child(innerkey));
+    var tempobj = new $firebaseObject($scope.questionref.child(outerkey).child('choices').child(innerkey));
     tempobj.$value = cho;
     tempobj.$save();
   };

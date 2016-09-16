@@ -152,7 +152,7 @@
                 <input type="range" min="1" max='{{setStep}}' ng-model="curRange" ng-change="changeRange(curRange)" disabled> &lt;!&ndash; ini bebas jadi bisa di atur di js&ndash;&gt;
                 <i class="icon ion-happy"></i>
               </div>-->
-              <div ng-repeat="(innerKeyLikert,item) in cr.steps track by $index" ng-init="$likert = $index">
+              <div ng-repeat="(innerKeyLikert,item) in cr.choices track by $index" ng-init="$likert = $index">
                 <div class="row">
                     <div class="col col-20">
                       <span class="makeRange">{{$likert+1}}</span>

@@ -42,7 +42,7 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
             }
             if (value.type=="range") {
               $scope.temprange = [];
-              angular.forEach(value.type.steps, function(cvalue,ckey) {
+              angular.forEach(value.type.choices, function(cvalue,ckey) {
                 $scope.temprange.push(false);
               });
               $scope.myanswerset.push($scope.temprange);
@@ -79,7 +79,7 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
     console.log($scope.submissionData);
     var isPopup = false;
     angular.forEach($scope.myanswerset, function(submitValue,submitKey) {
-        console.log("Key of each answer set : "+submitKey)
+        console.log("Key of each answer set : "+submitKey);
         console.log("Value of each answer set : " + submitValue);
         if (submitValue==''||submitValue===null) {
             isPopup = true;

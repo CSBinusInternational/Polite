@@ -38,7 +38,7 @@
                       </ion-list>
                   </div>
                   <div ng-switch-when="range">
-                    <ion-list ng-repeat="item in que.steps" ng-init ="$likert = $index">
+                    <ion-list ng-repeat="item in que.choices" ng-init ="$likert = $index">
                       <div class="row">
                         <ion-radio ng-value="$likert+1" ng-model="myanswerset[$outer]" name={{$outer}}><span class="makeRange">{{$likert+1}}</span> {{item}}</ion-radio>
                       </div>
