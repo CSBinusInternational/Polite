@@ -64,6 +64,10 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
           $scope.answerArray[i][j] = 0;
           $scope.questionArray[i][j] = "";
         }
+      if($scope.totalChoices[i] == 0){
+        for(j = 0 ; j < $scope.totalResponse;j++)
+        $scope.answerArray[i][j] = "";
+      }
     }
 
   });
@@ -91,7 +95,11 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
     angular.forEach($scope.answersObj, function(value,key) {
         var innerctr = 0;
         angular.forEach(value.answerset, function(innervalue,innerkey) {
-          if(isNaN(innervalue)){
+          if(typeof innervalue == 'string'){
+            $scope.answerArray[innerctr][ctr] = innervalue;
+            console.log("ctr : "+ ctr);
+          }
+          else if(isNaN(innervalue)){
             for(var i = $scope.answerArray[innerctr].length; i > 1; i--){
               if(i == $scope.answerArray[innerctr].length){
                 $scope.answerArray[innerctr][0] = new Array();
@@ -107,28 +115,15 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
               }
             });
           }
-          else{
-            $scope.answerArray[innerctr][innervalue-1] +=1;
+          else {
+            $scope.answerArray[innerctr][innervalue - 1] += 1;
           }
-          console.log($scope.answerArray[innerctr]);
+          console.log("Kantong : "+$scope.answerArray[innerctr]);
           innerctr+=1;
         });
       console.log("---");
         ctr+=1;
     });
-    $scope.series = ['Series A'];
-    $scope.labels = ["January", "February","March","April","May","June","July"];
-    $scope.labelsHorizontal = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-    $scope.dataaa = [
-        [65, 59, 80, 81, 56, 55, 40],
-        [28, 48, 40, 19, 86, 27, 90]
-    ];
-    $scope.dataHorizontal = [
-      [2, 2, 3]
-    ];
-    $scope.dataPie = [
-      65, 59
-    ];
     //console.log("Answer Array : " + $scope.answerArray[1][0]);
   });
 
