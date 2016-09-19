@@ -20,12 +20,17 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
     $scope.selectedpolling = $firebaseObject(ref.child('pollings').child(chosenpollingkey));
     $scope.myquestionset = $firebaseArray(ref.child('pollings').child(chosenpollingkey).child('questions'));
     //$scope.questionref = ref.child('pollings').child(chosenpollingkey).child('questions');
+    $scope.mandatoryArray = new Array();
+    angular.forEach()
     $scope.myanswerset = [];
     $scope.myquestionset.$loaded()
     .then(function(data){
+        var mCounter = 0;
         angular.forEach(data, function(value, key) {
             console.log("Value Type : " + value.type);
             console.log("Key : " + key);
+            $scope.mandatoryArray[mCounter] = value.mandatory;
+            mCounter++;
             if (value.type=="radio") {
               $scope.tempradio = [];
               angular.forEach(value.type.choices, function(cvalue,ckey) {
@@ -81,7 +86,7 @@ angular.module('App').controller('homeController', function ($scope, $ionicModal
     angular.forEach($scope.myanswerset, function(submitValue,submitKey) {
         console.log("Key of each answer set : "+submitKey);
         console.log("Value of each answer set : " + submitValue);
-        if (submitValue==''||submitValue===null) {
+        if ((submitValue==''||submitValue===null)&&$scope.mandatoryArray[submitKey]) {
             isPopup = true;
         }
     });
