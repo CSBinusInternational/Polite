@@ -23,5 +23,18 @@ angular.module('App').controller('aboutController', function ($scope, $ionicModa
     $scope.terms.hide();
   };
 
+    $ionicModal.fromTemplateUrl('views/about/developer.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(dev) {
+      $scope.dev = dev;
+    });
+  $scope.openDev = function(){
+    $scope.dev.show();
+    console.log("open Dev");
+  };
+  $scope.closeDev = function(){
+    $scope.dev.hide();
+  };
 }
 );
