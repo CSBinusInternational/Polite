@@ -95,11 +95,24 @@ angular.module('App').controller('myPollingSummaryController', function ($scope,
     angular.forEach($scope.answersObj, function(value,key) {
         var innerctr = 0;
         angular.forEach(value.answerset, function(innervalue,innerkey) {
-          if(typeof innervalue == 'string'){
+          console.log(innervalue);
+          if($scope.typeCheck[innerctr] == 'text'){
             $scope.answerArray[innerctr][ctr] = innervalue;
-            console.log("ctr : "+ ctr);
           }
-          else if(isNaN(innervalue)){
+          else if($scope.typeCheck[innerctr] == 'range'){
+            var len = $scope.answerArray[innerctr].length;
+            for(var i = $scope.answerArray[innerctr].length; i > 1; i--){
+              if($scope.answerArray[innerctr].length == i){
+                $scope.answerArray[innerctr][0] = new Array();
+                for(var j = 0; j < len; j++){
+                  $scope.answerArray[innerctr][0][j] = 0;
+                }
+              }
+              $scope.answerArray[innerctr].pop();
+            }
+            $scope.answerArray[innerctr][0][innervalue-1] += 1;
+          }
+          else if($scope.typeCheck[innerctr] == 'checkbox'){
             for(var i = $scope.answerArray[innerctr].length; i > 1; i--){
               if(i == $scope.answerArray[innerctr].length){
                 $scope.answerArray[innerctr][0] = new Array();
