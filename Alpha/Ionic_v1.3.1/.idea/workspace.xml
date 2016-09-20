@@ -31,12 +31,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mypollingsummary.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mypollingsummary.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/views/mypollingsummary/mypollingsummary.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.69801325">
-              <caret line="112" column="56" selection-start-line="112" selection-start-column="56" selection-end-line="112" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="108" column="17" selection-start-line="108" selection-start-column="17" selection-end-line="108" selection-end-column="17" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="distributepolling.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/views/distributepolling/distributepolling.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5569273">
+              <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#label#0;n#div#0;n#div#1;n#div#0;n#ion-card#0;n#ion-content#0;n#ion-modal-view#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,7 +110,6 @@
         <option value="$PROJECT_DIR$/www/views/about/term.html" />
         <option value="$PROJECT_DIR$/www/views/about/about.js" />
         <option value="$PROJECT_DIR$/www/css/style.css" />
-        <option value="$PROJECT_DIR$/www/views/distributepolling/distributepolling.html" />
         <option value="$PROJECT_DIR$/www/views/mypollings/mypollings.html" />
         <option value="$PROJECT_DIR$/www/views/mypollingsummary/mypollingsummary.html" />
         <option value="$PROJECT_DIR$/www/views/mypollings/mypollings.js" />
@@ -107,6 +118,7 @@
         <option value="$PROJECT_DIR$/www/views/home/home.js" />
         <option value="$PROJECT_DIR$/www/views/mypollingsummary/analysis.html" />
         <option value="$PROJECT_DIR$/www/views/mypollingsummary/mypollingsummary.js" />
+        <option value="$PROJECT_DIR$/www/views/distributepolling/distributepolling.html" />
       </list>
     </option>
   </component>
@@ -220,6 +232,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ionic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ionic_v1.3.1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="distributepolling" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -621,13 +655,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/views/distributepolling/distributepolling.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.0">
-          <caret line="45" column="57" selection-start-line="45" selection-start-column="57" selection-end-line="45" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/views/mypollings/mypollings.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.307692">
@@ -701,9 +728,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/views/mypollingsummary/mypollingsummary.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69801325">
-          <caret line="112" column="56" selection-start-line="112" selection-start-column="56" selection-end-line="112" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="108" column="17" selection-start-line="108" selection-start-column="17" selection-end-line="108" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/views/distributepolling/distributepolling.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5569273">
+          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#label#0;n#div#0;n#div#1;n#div#0;n#ion-card#0;n#ion-content#0;n#ion-modal-view#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
