@@ -33,9 +33,11 @@
                        <div class="item item-divider">
                            Bar chart
                        </div>
-                       <div class="item item-text-wrap">
+                       <ion-scroll zooming="true" direction="y" style="height: 200px">
+                       <div class="item">
                            <canvas id="bar2" class="chart chart-bar" chart-data="answerArray[$layer1]" chart-labels="questionArray[$layer1]" chart-legend="true" chart-options="{showTooltips: false}"></canvas>
                        </div>
+                      </ion-scroll>
                    </div>
                  </div>
                  <div ng-switch-when="range">
@@ -43,9 +45,11 @@
                        <div class="item item-divider">
                            Bar chart
                        </div>
-                       <div class="item item-text-wrap">
-                           <canvas id="bar" class="chart chart-bar" chart-data="answerArray[$layer1]" chart-labels="questionArray[$layer1]" chart-options="{showTooltips: falese}"></canvas>
+                       <ion-scroll zooming="true" direction="y" style="height: 200px">
+                       <div class="item">
+                           <canvas id="bar" class="chart chart-bar" chart-data="answerArray[$layer1]" chart-labels="questionArray[$layer1]" chart-legend="true" chart-options="{showTooltips: false}"></canvas>
                        </div>
+                      </ion-scroll>
                    </div>
                  </div>
                  <div ng-switch-default>
@@ -55,6 +59,7 @@
                             {{answerArray[$layer1][$index]}}
                         </div>
                     </div>
+                  </ion-scroll>
                  </div>
              </div>
          </div>
