@@ -1,9 +1,10 @@
 'Use Strict';
-angular.module('App').controller('myPollingSummaryController', function ($scope, $ionicModal, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, $firebaseArray, Auth, FURL, Utils,mypollkey) {
+angular.module('App').controller('myPollingSummaryController', function ($scope, $ionicModal, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, $firebaseArray, Auth, FURL, Utils,mypollkey,$window) {
   var ref = new Firebase(FURL);
   var authData = ref.getAuth();
   $scope.uuid = authData.uid;
-
+  $scope.heightChart = $window.innerHeight;
+  console.log("Window.innerHeight : " + $window.innerHeight);
   $scope.currentPollingKey = mypollkey.currentValue;
   var indexNum = $scope.currentPollingKey;
   var indexString = indexNum.toString();
