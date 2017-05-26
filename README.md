@@ -1,1 +1,1 @@
-![System Sketch](Pollite Logo/Pollite Logo.png)
+![System Sketch](PolliteLogo.png)
